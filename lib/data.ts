@@ -3,6 +3,8 @@ export const profile = {
   role: 'AI & Data Analytics',
   location: 'Atlanta, GA',
   email: 'danorete@gmail.com',
+  phone: '(470) 269-3298',
+  phoneHref: 'tel:+14702693298',
   github: 'https://github.com/danorete',
   linkedin: 'https://www.linkedin.com/in/ore-ajibade',
   status: 'Seeking Fall 2026 / 2027 AI & Data Engineering Opportunities',

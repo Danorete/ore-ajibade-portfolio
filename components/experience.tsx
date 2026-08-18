@@ -10,7 +10,7 @@ export function Experience() {
   const [open, setOpen] = useState(0)
 
   return (
-    <section id="experience" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
+    <section id="experience" className="mx-auto max-w-6xl px-4 pt-8 pb-16 sm:px-6 md:pt-10 md:pb-24">
       <SectionHeading
         eyebrow="Career"
         title="Work Experience & Leadership"
