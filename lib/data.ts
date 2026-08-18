@@ -128,14 +128,14 @@ export const projects: Project[] = [
   {
     title: 'AI-Powered RFM Customer Segmentation Dashboard',
     blurb:
-      'Segmented 5,878 customers from 1M+ retail transactions and surfaced that nearly half the customer base was at risk of churn.',
+      'Segmented 5,878 customers from 1M+ retail transactions, revealing that 77% of revenue comes from the top 20% of customers.',
     tags: ['Python', 'pandas', 'Streamlit', 'Claude API', 'Databricks'],
     liveUrl: 'https://ore-rfm-dashboard.streamlit.app/',
     repoUrl: 'https://github.com/Danorete/AI-RFM-Dashboard',
     highlights: [
       { metric: '5,878', label: 'Customers Segmented' },
-      { metric: '49.8%', label: 'At Risk or Needs Attention' },
-      { metric: '1M+', label: 'Transactions Scored' },
+      { metric: '77.2%', label: 'Revenue from Top 20%' },
+      { metric: '1M+', label: 'Transaction Records' },
     ],
   },
 ]
