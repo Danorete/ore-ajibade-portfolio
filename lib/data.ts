@@ -110,28 +110,10 @@ export const projects: Project[] = [
     ],
   },
   {
-    title: 'Customer Purchase Behavior Analysis & AI Dashboard',
-    blurb:
-      'Cleaned 1M+ transactions, identified the top 20% of customers driving 77.2% of revenue via RFM segmentation, automated refresh, and shipped a conversational AI query interface.',
-    tags: [
-      'Snowflake',
-      'Streamlit',
-      'Claude API',
-      'Power BI',
-      'RFM Segmentation',
-      'Databricks Genie',
-    ],
-    highlights: [
-      { metric: '1M+', label: 'Transactions Cleaned' },
-      { metric: '77.2%', label: 'Revenue from Top 20%' },
-      { metric: 'Auto', label: 'Refresh Pipeline' },
-    ],
-  },
-  {
     title: 'AI-Powered RFM Customer Segmentation Dashboard',
     blurb:
-      'Segmented 5,878 customers from 1M+ retail transactions, revealing that 77% of revenue comes from the top 20% of customers.',
-    tags: ['Python', 'pandas', 'Streamlit', 'Claude API', 'Databricks'],
+      'Segmented 5,878 customers from 1M+ Online Retail II transactions with RFM scoring, then turned the segments into a decision memo: protect the 2,530 Champions and Loyal Customers behind 84.7% of revenue, and win back the 683 Can\'t Lose Them and At Risk customers behind $1.66M in past spend. A Streamlit dashboard serves the synced segment table, and a Claude summary drafts plain language actions per segment from segment counts.',
+    tags: ['Python', 'pandas', 'Streamlit', 'Claude API', 'RFM Segmentation'],
     liveUrl: 'https://ore-rfm-dashboard.streamlit.app/',
     repoUrl: 'https://github.com/Danorete/AI-RFM-Dashboard',
     highlights: [
