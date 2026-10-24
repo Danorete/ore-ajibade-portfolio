@@ -130,8 +130,8 @@ export const projects: Project[] = [
   {
     title: 'AI-Powered RFM Customer Segmentation Dashboard',
     blurb:
-      'Segmented 5,878 customers from 1M+ retail transactions, revealing that 77% of revenue comes from the top 20% of customers.',
-    tags: ['Python', 'pandas', 'Streamlit', 'Claude API', 'Databricks'],
+      "Segmented 5,878 customers from 1M+ Online Retail II transactions with RFM scoring, then turned the segments into a decision memo: protect the 2,530 Champions and Loyal Customers behind 84.7% of revenue, and win back the 683 Can't Lose Them and At Risk customers behind $1.66M in past spend. A Streamlit dashboard serves the synced segment table, and a Claude summary drafts plain language actions per segment from segment counts.",
+    tags: ['Python', 'pandas', 'Streamlit', 'Claude API', 'RFM Segmentation'],
     liveUrl: 'https://ore-rfm-dashboard.streamlit.app/',
     repoUrl: 'https://github.com/Danorete/AI-RFM-Dashboard',
     highlights: [
