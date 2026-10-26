@@ -56,58 +56,6 @@ export const experiences: Experience[] = [
     tags: ['Graph RAG', 'Neo4j', 'Python', 'Claude Code', 'HealthKit'],
   },
   {
-    company: 'VibeCoders Business Hackathon, PromptPath',
-    role: 'Team Lead',
-    period: 'Oct 2026',
-    location: '',
-    points: [
-      'Led team VibeCoders in a business graded hackathon on building for people and organizations whose needs changed or went unmet because of AI.',
-      'Took an idea rooted in secure prompting and vibe coding risks and pivoted after mentor feedback to PromptPath, a product that helps new hires understand large company datasets safely.',
-      'Ran team meetings over Zoom, delegated work to the remaining members, and kept the project moving after teammates left.',
-      'Worked on the demo and presentation and hosted the team\'s pitch practice.',
-      'Represented the team in person at the event while teammates worked remotely.',
-    ],
-    tags: ['Team Leadership', 'Pitching', 'Delegation'],
-  },
-  {
-    company:
-      'HackHers 2026 (Girls Who Code at GSU hackathon), project MaternalGrid',
-    role: 'Data and Backend Lead',
-    period: '2026',
-    location: 'Atlanta, GA',
-    points: [
-      'Built MaternalGrid, a tool that simulates how maternity care access in Georgia changes when labor and delivery facilities open or close.',
-      'Audited the dataset and built the travel time model and matrix behind the simulation.',
-      'Designed the TigerData/Postgres schema and the Node/TypeScript API layer, developing with Claude Code.',
-      'Placed at HackHers 2026.',
-    ],
-    tags: [
-      'Postgres',
-      'Node.js',
-      'TypeScript',
-      'Claude Code',
-      'Travel Time Modeling',
-    ],
-  },
-  {
-    company: 'Microsoft x NSBE Agent-A-Thon, NSBE National Convention',
-    role: 'Team member, concept and product thinking',
-    period: '2026',
-    location: 'Baltimore, MD',
-    points: [
-      'Contributed concept and product thinking for an AI agent built in Microsoft Copilot Studio.',
-      'The solution used the Claude API, Databricks Genie for validation, and a Streamlit interface.',
-      'Placed 1st at the Agent-A-Thon.',
-    ],
-    tags: [
-      'Copilot Studio',
-      'Claude API',
-      'Databricks Genie',
-      'Streamlit',
-      'Product Thinking',
-    ],
-  },
-  {
     company: 'The Coca-Cola Company',
     role: 'Sales Representative',
     period: 'May 2025 – Jun 2026',
@@ -141,6 +89,75 @@ export const experiences: Experience[] = [
       'Performed exploratory data analysis (EDA) to surface transaction patterns and anomalies.',
     ],
     tags: ['SQL', 'EDA', 'Financial Data'],
+  },
+]
+
+export type Hackathon = {
+  name: string
+  event?: string
+  role: string
+  period: string
+  location?: string
+  result?: string
+  points: string[]
+  tags: string[]
+  repoUrl?: string
+  liveUrl?: string
+}
+
+export const hackathons: Hackathon[] = [
+  {
+    name: 'PromptPath',
+    event: 'VibeCoders Business Hackathon',
+    role: 'Team Lead',
+    period: 'Oct 2026',
+    points: [
+      'Led team VibeCoders in a business graded hackathon on building for people and organizations whose needs changed or went unmet because of AI.',
+      'Took an idea rooted in secure prompting and vibe coding risks and pivoted after mentor feedback to PromptPath, a product that helps new hires understand large company datasets safely.',
+      'Ran team meetings over Zoom, delegated work to the remaining members, and kept the project moving after teammates left.',
+      'Worked on the demo and presentation and hosted the team\'s pitch practice.',
+      'Represented the team in person at the event while teammates worked remotely.',
+    ],
+    tags: ['Team Leadership', 'Pitching', 'Delegation'],
+  },
+  {
+    name: 'MaternalGrid',
+    event: 'HackHers 2026 (Girls Who Code at GSU hackathon)',
+    role: 'Data and Backend Lead',
+    period: '2026',
+    location: 'Atlanta, GA',
+    result: 'Placed',
+    points: [
+      'Built MaternalGrid, a tool that simulates how maternity care access in Georgia changes when labor and delivery facilities open or close.',
+      'Audited the dataset and built the travel time model and matrix behind the simulation.',
+      'Designed the TigerData/Postgres schema and the Node/TypeScript API layer, developing with Claude Code.',
+    ],
+    tags: [
+      'Postgres',
+      'Node.js',
+      'TypeScript',
+      'Claude Code',
+      'Travel Time Modeling',
+    ],
+  },
+  {
+    name: 'Microsoft x NSBE Agent-A-Thon',
+    event: 'NSBE National Convention',
+    role: 'Team member, concept and product thinking',
+    period: '2026',
+    location: 'Baltimore, MD',
+    result: '1st Place',
+    points: [
+      'Contributed concept and product thinking for an AI agent built in Microsoft Copilot Studio.',
+      'The solution used the Claude API, Databricks Genie for validation, and a Streamlit interface.',
+    ],
+    tags: [
+      'Copilot Studio',
+      'Claude API',
+      'Databricks Genie',
+      'Streamlit',
+      'Product Thinking',
+    ],
   },
 ]
 
