@@ -150,6 +150,7 @@ export const hackathons: Hackathon[] = [
     points: [
       'Contributed concept and product thinking for an AI agent built in Microsoft Copilot Studio.',
       'The solution used the Claude API, Databricks Genie for validation, and a Streamlit interface.',
+      'The agent scored resumes from 1 to 100 and automated calendar scheduling for recruiters, built in a live 60 minute sprint.',
     ],
     tags: [
       'Copilot Studio',
@@ -157,6 +158,7 @@ export const hackathons: Hackathon[] = [
       'Databricks Genie',
       'Streamlit',
       'Product Thinking',
+      'Outlook API',
     ],
   },
 ]
