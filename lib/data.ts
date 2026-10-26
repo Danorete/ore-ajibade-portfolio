@@ -70,6 +70,24 @@ export const experiences: Experience[] = [
     tags: ['Team Leadership', 'Pitching', 'Delegation'],
   },
   {
+    company: 'Microsoft x NSBE Agent-A-Thon, NSBE National Convention',
+    role: 'Team member, concept and product thinking',
+    period: '2026',
+    location: 'Baltimore, MD',
+    points: [
+      'Contributed concept and product thinking for an AI agent built in Microsoft Copilot Studio.',
+      'The solution used the Claude API, Databricks Genie for validation, and a Streamlit interface.',
+      'Placed 1st at the Agent-A-Thon.',
+    ],
+    tags: [
+      'Copilot Studio',
+      'Claude API',
+      'Databricks Genie',
+      'Streamlit',
+      'Product Thinking',
+    ],
+  },
+  {
     company:
       'HackHers 2026 (Girls Who Code at GSU hackathon), project MaternalGrid',
     role: 'Data and Backend Lead',
@@ -87,24 +105,6 @@ export const experiences: Experience[] = [
       'TypeScript',
       'Claude Code',
       'Travel Time Modeling',
-    ],
-  },
-  {
-    company: 'Microsoft x NSBE Agent-A-Thon, NSBE National Convention',
-    role: 'Team member, concept and product thinking',
-    period: '2026',
-    location: 'Baltimore, MD',
-    points: [
-      'Contributed concept and product thinking for an AI agent built in Microsoft Copilot Studio.',
-      'The solution used the Claude API, Databricks Genie for validation, and a Streamlit interface.',
-      'Placed 1st at the Agent-A-Thon.',
-    ],
-    tags: [
-      'Copilot Studio',
-      'Claude API',
-      'Databricks Genie',
-      'Streamlit',
-      'Product Thinking',
     ],
   },
   {
