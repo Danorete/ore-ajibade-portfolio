@@ -10,7 +10,7 @@ export const profile = {
   status: 'Seeking Fall 2026 / 2027 AI & Data Engineering Opportunities',
   headline: 'Bridging Data Analytics, Graph RAG & Intelligent AI Systems',
   subtitle:
-    'B.B.A. in Computer Information Systems (Data Innovation) at Georgia State University · AI Intern @ BalanX Bio · 1st Place Microsoft AI Hackathon Winner.',
+    'B.B.A. in Computer Information Systems (Data Innovation) at Georgia State University · Former AI Intern @ BalanX Bio · 1st Place Microsoft AI Hackathon Winner.',
 }
 
 export const heroStats = [
@@ -31,9 +31,21 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
+    company: 'GSU Career Services Center',
+    role: 'Career Peer Educator',
+    period: 'Jul 2026 – Present',
+    location: 'Atlanta, GA',
+    points: [
+      'Educate students on the services the Career Services Center provides.',
+      'Review student resumes and give feedback, and coach students on pitches and interviews.',
+      'Meet with major and local employers to host campus events where students can apply and form personal connections.',
+    ],
+    tags: ['Career Coaching', 'Resume Review', 'Employer Relations'],
+  },
+  {
     company: 'BalanX Bio',
     role: 'AI Intern',
-    period: 'Jul 2026 – Present',
+    period: 'Jul 2026 – Oct 2026',
     location: 'Atlanta, GA',
     points: [
       'Building an AI Health Digital Twin proof-of-concept to model individual health trajectories.',
@@ -42,6 +54,58 @@ export const experiences: Experience[] = [
       'Authored a Claude Code technical knowledge base to accelerate team onboarding and documentation.',
     ],
     tags: ['Graph RAG', 'Neo4j', 'Python', 'Claude Code', 'HealthKit'],
+  },
+  {
+    company: 'VibeCoders Business Hackathon, PromptPath',
+    role: 'Team Lead',
+    period: 'Oct 2026',
+    location: '',
+    points: [
+      'Led team VibeCoders in a business graded hackathon on building for people and organizations whose needs changed or went unmet because of AI.',
+      'Took an idea rooted in secure prompting and vibe coding risks and pivoted after mentor feedback to PromptPath, a product that helps new hires understand large company datasets safely.',
+      'Ran team meetings over Zoom, delegated work to the remaining members, and kept the project moving after teammates left.',
+      'Worked on the demo and presentation and hosted the team\'s pitch practice.',
+      'Represented the team in person at the event while teammates worked remotely.',
+    ],
+    tags: ['Team Leadership', 'Pitching', 'Delegation'],
+  },
+  {
+    company: 'Microsoft x NSBE Agent-A-Thon, NSBE National Convention',
+    role: 'Team member, concept and product thinking',
+    period: '2026',
+    location: 'Baltimore, MD',
+    points: [
+      'Contributed concept and product thinking for an AI agent built in Microsoft Copilot Studio.',
+      'The solution used the Claude API, Databricks Genie for validation, and a Streamlit interface.',
+      'Placed 1st at the Agent-A-Thon.',
+    ],
+    tags: [
+      'Copilot Studio',
+      'Claude API',
+      'Databricks Genie',
+      'Streamlit',
+      'Product Thinking',
+    ],
+  },
+  {
+    company:
+      'HackHers 2026 (Girls Who Code at GSU hackathon), project MaternalGrid',
+    role: 'Data and Backend Lead',
+    period: '2026',
+    location: 'Atlanta, GA',
+    points: [
+      'Built MaternalGrid, a tool that simulates how maternity care access in Georgia changes when labor and delivery facilities open or close.',
+      'Audited the dataset and built the travel time model and matrix behind the simulation.',
+      'Designed the TigerData/Postgres schema and the Node/TypeScript API layer, developing with Claude Code.',
+      'Placed at HackHers 2026.',
+    ],
+    tags: [
+      'Postgres',
+      'Node.js',
+      'TypeScript',
+      'Claude Code',
+      'Travel Time Modeling',
+    ],
   },
   {
     company: 'The Coca-Cola Company',
