@@ -187,6 +187,18 @@ export const projects: Project[] = [
       { metric: '1M+', label: 'Transaction Records' },
     ],
   },
+  {
+    title: 'AI Powered Python Study Tutor',
+    blurb:
+      "A study app I built after missing lectures before a quiz. It turns my professor's lecture transcripts into practice problems across the textbook chapters and uses Claude to coach students with Socratic feedback, with spaced repetition, exam simulation, and progress tracking.",
+    tags: ['Python', 'JavaScript', 'Claude API', 'Spaced Repetition'],
+    repoUrl: 'https://github.com/Danorete/Python-Study-Tutor',
+    highlights: [
+      { metric: '242', label: 'Practice Problems' },
+      { metric: '16', label: 'Topics' },
+      { metric: '3', label: 'Difficulty Levels' },
+    ],
+  },
 ]
 
 export type SkillCategory = {
