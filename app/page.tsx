@@ -1,6 +1,7 @@
 import { Navbar } from '@/components/navbar'
 import { Hero } from '@/components/hero'
 import { Experience } from '@/components/experience'
+import { Hackathons } from '@/components/hackathons'
 import { Projects } from '@/components/projects'
 import { Skills } from '@/components/skills'
 import { Education } from '@/components/education'
@@ -15,6 +16,7 @@ export default function Page() {
       <main>
         <Hero />
         <Experience />
+        <Hackathons />
         <Projects />
         <Skills />
         <Education />

@@ -10,7 +10,7 @@ export const profile = {
   status: 'Seeking Fall 2026 / 2027 AI & Data Engineering Opportunities',
   headline: 'Bridging Data Analytics, Graph RAG & Intelligent AI Systems',
   subtitle:
-    'B.B.A. in Computer Information Systems (Data Innovation) at Georgia State University · AI Intern @ BalanX Bio · 1st Place Microsoft AI Hackathon Winner.',
+    'B.B.A. in Computer Information Systems (Data Innovation) at Georgia State University · Former AI Intern @ BalanX Bio · 1st Place Microsoft AI Hackathon Winner.',
 }
 
 export const heroStats = [
@@ -31,9 +31,21 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
+    company: 'GSU Career Services Center',
+    role: 'Career Peer Educator',
+    period: 'Jul 2026 – Present',
+    location: 'Atlanta, GA',
+    points: [
+      'Educate students on the services the Career Services Center provides.',
+      'Review student resumes and give feedback, and coach students on pitches and interviews.',
+      'Meet with major and local employers to host campus events where students can apply and form personal connections.',
+    ],
+    tags: ['Career Coaching', 'Resume Review', 'Employer Relations'],
+  },
+  {
     company: 'BalanX Bio',
     role: 'AI Intern',
-    period: 'Jul 2026 – Present',
+    period: 'Jul 2026 – Oct 2026',
     location: 'Atlanta, GA',
     points: [
       'Building an AI Health Digital Twin proof-of-concept to model individual health trajectories.',
@@ -80,6 +92,77 @@ export const experiences: Experience[] = [
   },
 ]
 
+export type Hackathon = {
+  name: string
+  event?: string
+  role: string
+  period: string
+  location?: string
+  result?: string
+  points: string[]
+  tags: string[]
+  repoUrl?: string
+  liveUrl?: string
+}
+
+export const hackathons: Hackathon[] = [
+  {
+    name: 'PromptPath',
+    event: 'VibeCoders Business Hackathon',
+    role: 'Team Lead',
+    period: 'Oct 2026',
+    points: [
+      'Led team VibeCoders in a business graded hackathon on building for people and organizations whose needs changed or went unmet because of AI.',
+      'Took an idea rooted in secure prompting and vibe coding risks and pivoted after mentor feedback to PromptPath, a product that helps new hires understand large company datasets safely.',
+      'Ran team meetings over Zoom, delegated work to the remaining members, and kept the project moving after teammates left.',
+      'Worked on the demo and presentation and hosted the team\'s pitch practice.',
+      'Represented the team in person at the event while teammates worked remotely.',
+    ],
+    tags: ['Team Leadership', 'Pitching', 'Delegation'],
+  },
+  {
+    name: 'MaternalGrid',
+    event: 'HackHers 2026 (Girls Who Code at GSU hackathon)',
+    role: 'Data and Backend Lead',
+    period: '2026',
+    location: 'Atlanta, GA',
+    result: 'Placed',
+    points: [
+      'Built MaternalGrid, a tool that simulates how maternity care access in Georgia changes when labor and delivery facilities open or close.',
+      'Audited the dataset and built the travel time model and matrix behind the simulation.',
+      'Designed the TigerData/Postgres schema and the Node/TypeScript API layer, developing with Claude Code.',
+    ],
+    tags: [
+      'Postgres',
+      'Node.js',
+      'TypeScript',
+      'Claude Code',
+      'Travel Time Modeling',
+    ],
+  },
+  {
+    name: 'Microsoft x NSBE Agent-A-Thon',
+    event: 'NSBE National Convention',
+    role: 'Team member, concept and product thinking',
+    period: '2026',
+    location: 'Baltimore, MD',
+    result: '1st Place',
+    points: [
+      'Contributed concept and product thinking for an AI agent built in Microsoft Copilot Studio.',
+      'The solution used the Claude API, Databricks Genie for validation, and a Streamlit interface.',
+      'The agent scored resumes from 1 to 100 and automated calendar scheduling for recruiters, built in a live 60 minute sprint.',
+    ],
+    tags: [
+      'Copilot Studio',
+      'Claude API',
+      'Databricks Genie',
+      'Streamlit',
+      'Product Thinking',
+      'Outlook API',
+    ],
+  },
+]
+
 export type Project = {
   title: string
   blurb: string
@@ -92,24 +175,6 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    title: 'Microsoft AI Hackathon Winner (Agent-A-Thon)',
-    award: '1st Place',
-    blurb:
-      'Won 1st place in a live 60-minute sprint. Built an AI agent that scores resumes 1–100 and automates calendar scheduling for recruiters.',
-    tags: [
-      'Microsoft Copilot Studio',
-      'AI Agents',
-      'Python',
-      'Outlook API',
-      'NSBE',
-    ],
-    highlights: [
-      { metric: '1st', label: 'Place Winner' },
-      { metric: '60 min', label: 'Live Sprint' },
-      { metric: '1–100', label: 'Resume Scoring' },
-    ],
-  },
-  {
     title: 'AI-Powered RFM Customer Segmentation Dashboard',
     blurb:
       'Segmented 5,878 customers from 1M+ Online Retail II transactions with RFM scoring, then turned the segments into a decision memo: protect the 2,530 Champions and Loyal Customers behind 84.7% of revenue, and win back the 683 Can\'t Lose Them and At Risk customers behind $1.66M in past spend. A Streamlit dashboard serves the synced segment table, and a Claude summary drafts plain language actions per segment from segment counts.',
@@ -120,6 +185,18 @@ export const projects: Project[] = [
       { metric: '5,878', label: 'Customers Segmented' },
       { metric: '77.2%', label: 'Revenue from Top 20%' },
       { metric: '1M+', label: 'Transaction Records' },
+    ],
+  },
+  {
+    title: 'AI Powered Python Study Tutor',
+    blurb:
+      "A study app I built after missing lectures before a quiz. It turns my professor's lecture transcripts into practice problems across the textbook chapters and uses Claude to coach students with Socratic feedback, with spaced repetition, exam simulation, and progress tracking.",
+    tags: ['Python', 'JavaScript', 'Claude API', 'Spaced Repetition'],
+    repoUrl: 'https://github.com/Danorete/Python-Study-Tutor',
+    highlights: [
+      { metric: '242', label: 'Practice Problems' },
+      { metric: '16', label: 'Topics' },
+      { metric: '3', label: 'Difficulty Levels' },
     ],
   },
 ]
