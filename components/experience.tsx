@@ -55,10 +55,12 @@ export function Experience() {
                     </div>
                     <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
                       <span className="font-mono">{exp.period}</span>
-                      <span className="inline-flex items-center gap-1">
-                        <MapPin className="size-3" />
-                        {exp.location}
-                      </span>
+                      {exp.location ? (
+                        <span className="inline-flex items-center gap-1">
+                          <MapPin className="size-3" />
+                          {exp.location}
+                        </span>
+                      ) : null}
                     </div>
                   </div>
                   <ChevronDown

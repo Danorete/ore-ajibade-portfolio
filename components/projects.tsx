@@ -1,12 +1,9 @@
 import Link from 'next/link'
 import { ArrowRight, Code, ExternalLink, Trophy } from 'lucide-react'
 import { projects } from '@/lib/data'
-import { getCardThumbnail } from '@/lib/piedmont-media'
 import { SectionHeading } from './section-heading'
 
 export function Projects() {
-  const piedmontThumb = getCardThumbnail()
-
   return (
     <section id="projects" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
       <SectionHeading
@@ -17,8 +14,7 @@ export function Projects() {
 
       <div className="mt-10 grid gap-5 md:grid-cols-2">
         {projects.map((p) => {
-          const thumb =
-            p.title === 'The Piedmont Ledger' ? piedmontThumb : p.thumbnail
+          const thumb = p.thumbnail
 
           return (
             <article

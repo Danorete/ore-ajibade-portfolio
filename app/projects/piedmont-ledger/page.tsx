@@ -11,7 +11,7 @@ const DEMO_URL = ''
 export const metadata: Metadata = {
   title: 'The Piedmont Ledger — Ore Ajibade',
   description:
-    'A team investigation of a simulated ticketing-system breach, with a tested alert and a six-week plan. 2nd place at the Microsoft × AIS GSU Data Dive, Cybersecurity track.',
+    'A team investigation of a simulated ticketing-system breach, with a tested alert and a six-week plan. Honorable Mention at the Microsoft × AIS GSU Data Dive, Cybersecurity track.',
 }
 
 const skillBlocks = [
@@ -107,7 +107,7 @@ export default function PiedmontLedgerPage() {
         <section className="flex flex-col gap-6" aria-labelledby="piedmont-title">
           <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-primary">
             <Trophy className="size-3.5" />
-            2nd place
+            Honorable Mention
           </span>
 
           <div className="flex flex-col gap-3">
@@ -147,7 +147,7 @@ export default function PiedmontLedgerPage() {
                 My role
               </dt>
               <dd className="mt-1.5 leading-relaxed text-foreground">
-                I led the investigation, built the demo and presented it
+                Investigation lead, demo builder and presenter
               </dd>
             </div>
           </dl>
