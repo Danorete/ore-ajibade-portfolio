@@ -147,7 +147,7 @@ export default function PiedmontLedgerPage() {
                 My role
               </dt>
               <dd className="mt-1.5 leading-relaxed text-foreground">
-                I led the investigation, built the demo and presented it
+                Investigation lead, demo builder and presenter
               </dd>
             </div>
           </dl>

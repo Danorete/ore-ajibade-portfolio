@@ -110,7 +110,7 @@ export const hackathons: Hackathon[] = [
   {
     name: 'The Piedmont Ledger',
     event: 'Microsoft × AIS GSU Data Dive, Cybersecurity track',
-    role: 'Team Lead, investigation and demo build',
+    role: 'Investigation lead, demo builder and presenter',
     period: 'Oct 27–28, 2026',
     result: 'Honorable Mention',
     points: [
