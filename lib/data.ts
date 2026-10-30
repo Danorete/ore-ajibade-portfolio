@@ -88,9 +88,33 @@ export type Project = {
   award?: string
   liveUrl?: string
   repoUrl?: string
+  detailHref?: string
+  thumbnail?: string
+  thumbnailAlt?: string
 }
 
 export const projects: Project[] = [
+  {
+    title: 'The Piedmont Ledger',
+    award: '2nd Place',
+    blurb:
+      'A team investigation of a simulated ticketing-system breach, with a tested alert and a six-week plan',
+    tags: [
+      'Data analysis',
+      'Visualization',
+      'AI agent prompting',
+      'Project management',
+      'Cybersecurity',
+    ],
+    highlights: [
+      { metric: '54/54', label: 'Attacks Caught' },
+      { metric: '0', label: 'False Alarms' },
+      { metric: '630', label: 'Fake Tickets Traced' },
+    ],
+    detailHref: '/projects/piedmont-ledger',
+    thumbnailAlt:
+      'Timeline slide with labelled callout boxes marking the three nights of unauthorized visits',
+  },
   {
     title: 'Microsoft AI Hackathon Winner (Agent-A-Thon)',
     award: '1st Place',
@@ -149,12 +173,16 @@ export const skillCategories: SkillCategory[] = [
     name: 'Technical Tools & Platforms',
     skills: [
       'Python (Pandas, NumPy)',
+      'Excel / CSV',
       'SQL',
       'Snowflake',
       'Databricks',
       'Power BI',
       'Tableau',
       'Streamlit',
+      'HTML / CSS / JavaScript',
+      'GSAP animation',
+      'Playwright for browser testing',
       'Git / GitHub',
       'Microsoft Azure',
     ],
@@ -167,6 +195,10 @@ export const skillCategories: SkillCategory[] = [
       'Gap Analysis',
       'Technical Documentation',
       'Financial Metrics (ROI, Margins)',
+      'Project Management',
+      'Cybersecurity',
+      'Data analysis and visualization',
+      'AI agent prompting',
     ],
   },
   {
