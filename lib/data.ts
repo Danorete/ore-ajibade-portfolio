@@ -96,7 +96,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     title: 'The Piedmont Ledger',
-    award: '2nd Place',
+    award: 'Honorable Mention',
     blurb:
       'A team investigation of a simulated ticketing-system breach, with a tested alert and a six-week plan',
     tags: [
