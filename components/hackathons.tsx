@@ -1,7 +1,15 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDown, Code, ExternalLink, MapPin, Trophy } from 'lucide-react'
+import Link from 'next/link'
+import {
+  ArrowRight,
+  ChevronDown,
+  Code,
+  ExternalLink,
+  MapPin,
+  Trophy,
+} from 'lucide-react'
 import { hackathons } from '@/lib/data'
 import { cn } from '@/lib/utils'
 import { SectionHeading } from './section-heading'
@@ -110,8 +118,17 @@ export function Hackathons() {
                           </span>
                         ))}
                       </div>
-                      {(hack.liveUrl || hack.repoUrl) && (
+                      {(hack.liveUrl || hack.repoUrl || hack.detailHref) && (
                         <div className="mt-4 flex flex-wrap gap-4 border-t border-border pt-4">
+                          {hack.detailHref && (
+                            <Link
+                              href={hack.detailHref}
+                              className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary transition-colors hover:text-primary/80"
+                            >
+                              View case study
+                              <ArrowRight className="size-3.5" />
+                            </Link>
+                          )}
                           {hack.liveUrl && (
                             <a
                               href={hack.liveUrl}

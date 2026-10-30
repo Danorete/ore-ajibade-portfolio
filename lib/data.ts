@@ -103,9 +103,30 @@ export type Hackathon = {
   tags: string[]
   repoUrl?: string
   liveUrl?: string
+  detailHref?: string
 }
 
 export const hackathons: Hackathon[] = [
+  {
+    name: 'The Piedmont Ledger',
+    event: 'Microsoft × AIS GSU Data Dive, Cybersecurity track',
+    role: 'Team Lead, investigation and demo build',
+    period: 'Oct 27–28, 2026',
+    result: 'Honorable Mention',
+    points: [
+      'Led a team investigation of a simulated ticketing-system breach using 1,400 log lines and 1,161 ticket records.',
+      'Built and tested a behavior-based alert: 54 of 54 attacks caught with 0 false alarms on held-out data.',
+      'Traced 630 fake tickets to a single compromised key and proposed a four-layer fix with a six-week rollout plan.',
+    ],
+    tags: [
+      'Data analysis',
+      'Visualization',
+      'AI agent prompting',
+      'Project management',
+      'Cybersecurity',
+    ],
+    detailHref: '/projects/piedmont-ledger',
+  },
   {
     name: 'PromptPath',
     event: 'VibeCoders Business Hackathon',
@@ -171,6 +192,9 @@ export type Project = {
   award?: string
   liveUrl?: string
   repoUrl?: string
+  detailHref?: string
+  thumbnail?: string
+  thumbnailAlt?: string
 }
 
 export const projects: Project[] = [
@@ -226,12 +250,16 @@ export const skillCategories: SkillCategory[] = [
     name: 'Technical Tools & Platforms',
     skills: [
       'Python (Pandas, NumPy)',
+      'Excel / CSV',
       'SQL',
       'Snowflake',
       'Databricks',
       'Power BI',
       'Tableau',
       'Streamlit',
+      'HTML / CSS / JavaScript',
+      'GSAP animation',
+      'Playwright for browser testing',
       'Git / GitHub',
       'Microsoft Azure',
     ],
@@ -244,6 +272,10 @@ export const skillCategories: SkillCategory[] = [
       'Gap Analysis',
       'Technical Documentation',
       'Financial Metrics (ROI, Margins)',
+      'Project Management',
+      'Cybersecurity',
+      'Data analysis and visualization',
+      'AI agent prompting',
     ],
   },
   {
