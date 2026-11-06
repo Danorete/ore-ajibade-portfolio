@@ -33,7 +33,7 @@ export const experiences: Experience[] = [
   {
     company: 'BalanX Bio',
     role: 'AI Intern',
-    period: 'Jul 2026 – Present',
+    period: 'Aug 2026 – Oct 2026',
     location: 'Atlanta, GA',
     points: [
       'Building an AI Health Digital Twin proof-of-concept to model individual health trajectories.',
@@ -136,7 +136,7 @@ export const projects: Project[] = [
   {
     title: 'AI-Powered RFM Customer Segmentation Dashboard',
     blurb:
-      'Segmented 5,878 customers from 1M+ Online Retail II transactions with RFM scoring, then turned the segments into a decision memo: protect the 2,530 Champions and Loyal Customers behind 84.7% of revenue, and win back the 683 Can\'t Lose Them and At Risk customers behind $1.66M in past spend. A Streamlit dashboard serves the synced segment table, and a Claude summary drafts plain language actions per segment from segment counts.',
+      'Segmented 5,878 customers from 1M+ Online Retail II transactions with RFM scoring, then turned the segments into a decision memo: protect the 2,530 Champions and Loyal Customers behind 84.7% of revenue, and win back the 683 Can\'t Lose Them and At Risk customers behind £1.66M in past spend. A Streamlit dashboard serves the synced segment table, and a Claude summary drafts plain language actions per segment from segment level revenue and behavior figures.',
     tags: ['Python', 'pandas', 'Streamlit', 'Claude API', 'RFM Segmentation'],
     liveUrl: 'https://ore-rfm-dashboard.streamlit.app/',
     repoUrl: 'https://github.com/Danorete/AI-RFM-Dashboard',

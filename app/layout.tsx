@@ -10,10 +10,10 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ore-ajibade-portfolio.vercel.app'),
   title: 'Ore Ajibade — AI & Data Analytics Developer',
   description:
     'Portfolio of Ore Ajibade, an AI & Data Analytics developer in Atlanta, GA. Graph RAG, Neo4j, data engineering, and intelligent AI systems. 1st Place Microsoft AI Hackathon Winner.',
-  generator: 'v0.app',
   keywords: [
     'Ore Ajibade',
     'AI Developer',
@@ -28,6 +28,9 @@ export const metadata: Metadata = {
     description:
       'Bridging Data Analytics, Graph RAG & Intelligent AI Systems.',
     type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
   },
 }
 
