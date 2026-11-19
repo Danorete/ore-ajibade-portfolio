@@ -11,7 +11,7 @@ export const profile = {
     'Seeking Summer 2027 analytics internships and Fall 2026 / 2027 AI & data engineering roles',
   headline: 'Bridging Data Analytics, Graph RAG & Intelligent AI Systems',
   subtitle:
-    'B.B.A. in Computer Information Systems (Data Innovation) at Georgia State University · Former AI Intern @ BalanX Bio · 1st Place Microsoft AI Hackathon Winner.',
+    'B.B.A. in Computer Information Systems (Digital Innovation and Analytics) at Georgia State University · Former AI Intern @ BalanX Bio · 1st Place Microsoft AI Hackathon Winner.',
 }
 
 export const heroStats = [
@@ -25,8 +25,13 @@ export const heroFacts = [
   {
     label: 'Education',
     value:
-      'B.B.A. in Computer Information Systems (Data Innovation), Georgia State University',
+      'B.B.A. in Computer Information Systems (Digital Innovation and Analytics), Georgia State University',
     detail: 'Expected May 2027',
+  },
+  {
+    label: 'Now',
+    value: 'AI Trainer, Handshake AI · Student Ambassador, GSU Career Services',
+    detail: 'Handshake Jul 2026 – Present · Career Services Aug 2026 – Present',
   },
   {
     label: 'Recent',
@@ -51,6 +56,29 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
+    company: 'Handshake AI',
+    role: 'AI Trainer',
+    period: 'Jul 2026 – Present',
+    location: 'Remote',
+    points: [
+      'Evaluated 200+ AI model outputs at 25 to 30 hours weekly, scoring against rubrics and flagging unsupported claims.',
+      'Verified model-generated code for correctness and fact-checked outputs against reliable sources, raising output accuracy across programming and subject areas.',
+    ],
+    tags: ['Model evaluation', 'Code review', 'Fact checking', 'Prompt writing'],
+  },
+  {
+    company: 'GSU Career Services Center',
+    role: 'Student Ambassador',
+    period: 'Aug 2026 – Present',
+    location: 'Atlanta, GA',
+    points: [
+      'Helped 50 to 100 students every week with resume reviews, interview advice, and career center services at Georgia State.',
+      "Scheduled 10 to 15 student appointments every day across the center's resume, interview, and career services.",
+      'Reached 50+ students at the weeklong Resume Days event through printed pamphlets and presentations, onboarding students onto VMock automated feedback.',
+    ],
+    tags: ['VMock', 'Appointment scheduling', 'Event logistics'],
+  },
+  {
     company: 'BalanX Bio',
     role: 'AI Intern',
     period: 'Aug 2026 – Oct 2026',
@@ -69,7 +97,7 @@ export const experiences: Experience[] = [
     period: 'May 2025 – Jun 2026',
     location: 'Atlanta, GA',
     points: [
-      'Ranked in the top 5% of associates by weekly revenue and outperformed the peer average by 40% during peak promotional cycles.',
+      'Ranked in the top 5% of associates by weekly revenue across 500+ daily customer interactions, and outperformed the peer average by 40% during peak promotional cycles.',
       'Contributed to a 10% year-over-year store revenue increase by building high-traffic product displays.',
       'Cut out-of-stock occurrences by 25% by scanning shelf stock with handheld technology and ordering to demand and expiry.',
       'Reconciled cash, product, and system records within the same shift, held register and inventory variance within 0.5%, and resolved $1,000+ in cumulative discrepancies across $1M in monthly store volume.',
@@ -275,6 +303,32 @@ export const projects: Project[] = [
     thumbnailAlt:
       'Onboarding Copilot answering a question with cited table and column sources open',
   },
+  {
+    title: 'WNBA: Womansports Negativity Blocking Assistant',
+    blurb:
+      'Led a team of 4 at the Microsoft Garage "Code for Change" hackathon (Sep 2026, Microsoft Atlanta office) as team lead and AI engineer. We built an advisory moderation agent for harassment of women athletes, with every enforcement decision left to a human moderator.',
+    tags: ['Microsoft AI Foundry', 'Agent Framework SDK', 'Azure OpenAI', 'Python'],
+    architecture:
+      'An advisory agent on Microsoft AI Foundry and the Agent Framework SDK (Python) with zero autonomous account actions, a three-tier strike framework with 30 and 60 day redemption decay, and a JSON-schema audit trail logged through a tool call.',
+    validated:
+      'A benchmark of 15 banter posts and 10 harassment examples: 0 false positives, 10 of 10 flagged, and about 850 ms average latency confirmed in Azure AI Foundry Traces. It ran on a trial account, so escalation test case counts were not recorded.',
+    highlights: [
+      { metric: '10/10', label: 'Harassment Examples Flagged' },
+      { metric: '0', label: 'False Positives on 15 Banter Posts' },
+      { metric: '~850 ms', label: 'Average Latency' },
+    ],
+  },
+  {
+    title: 'AI-Powered Python Study Tutor',
+    blurb:
+      'A study app I built to practice Python fundamentals. It serves problems chapter by chapter, uses Claude to coach students with Socratic hints instead of giving answers, and adds spaced repetition, exam simulation, and progress tracking.',
+    tags: ['Python', 'JavaScript', 'Claude API', 'Spaced Repetition'],
+    highlights: [
+      { metric: '242', label: 'Practice Problems' },
+      { metric: '16', label: 'Textbook Topics' },
+      { metric: '3', label: 'Difficulty Levels' },
+    ],
+  },
 ]
 
 export type SkillCategory = {
@@ -346,7 +400,8 @@ export const skillCategories: SkillCategory[] = [
 
 export const education = {
   school: 'Georgia State University',
-  degree: 'B.B.A. in Computer Information Systems (Data Innovation / Analytics)',
+  degree:
+    'B.B.A. in Computer Information Systems, Concentration in Digital Innovation and Analytics',
   expected: 'Expected May 2027',
   honors: [
     'Starks Scholarship — Full Tuition Merit Award',
