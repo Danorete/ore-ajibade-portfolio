@@ -92,6 +92,7 @@ export type Project = {
   thumbnail?: string
   thumbnailAlt?: string
   video?: { mp4: string; poster: string; caption: string }
+  demoUrl?: string
 }
 
 export const projects: Project[] = [
@@ -144,6 +145,9 @@ export const projects: Project[] = [
     tags: ['Python', 'pandas', 'Streamlit', 'Claude API', 'RFM Segmentation'],
     liveUrl: 'https://ore-rfm-dashboard.streamlit.app/',
     repoUrl: 'https://github.com/Danorete/AI-RFM-Dashboard',
+    thumbnail: '/projects/rfm-dashboard/card.jpg',
+    thumbnailAlt:
+      'Customer Segment AI Insights dashboard with an RFM segment table and a bar chart of customers per segment',
     highlights: [
       { metric: '5,878', label: 'Customers Segmented' },
       { metric: '77.2%', label: 'Revenue from Top 20%' },
@@ -178,7 +182,11 @@ export const projects: Project[] = [
     blurb:
       'Built at HackHers 2026 (HealthHER track). A planning tool that shows health planners where Georgia women live too far from labor and delivery care, and lets them simulate closing or opening a delivering hospital to see how access changes. Travel times are modeled, not routed drive times.',
     tags: ['Streamlit', 'Python', 'PostGIS', 'TypeScript', 'Geospatial Analysis'],
+    liveUrl: '/projects/maternalgrid/index.html',
     repoUrl: 'https://github.com/Danorete/maternalgrid',
+    thumbnail: '/projects/maternalgrid/dashboard.jpg',
+    thumbnailAlt:
+      'MaternalGrid dashboard showing a map of Georgia counties beyond a 30-minute drive to labor and delivery care, with 74 of 159 counties flagged',
     highlights: [
       { metric: '159', label: 'Georgia Counties' },
       { metric: '74', label: 'Counties Beyond 30 Min' },
@@ -195,9 +203,9 @@ export const projects: Project[] = [
       { metric: '192', label: 'Blind Judgments' },
       { metric: '3 of 4', label: 'Models Passed All' },
     ],
-    thumbnail: '/projects/llm-judge-experiment/dashboard.png',
+    thumbnail: '/projects/llm-judge-experiment/field-notes-card.jpg',
     thumbnailAlt:
-      'Streamlit dashboard comparing model accuracy, latency and token use across resume extraction runs',
+      'Extraction Field Notes dashboard showing a 94% extraction pass rate and a prompt-by-model pass rate chart where one model drops on the revised prompt',
   },
   {
     title: 'PromptPath Onboarding Copilot',
@@ -209,6 +217,7 @@ export const projects: Project[] = [
       { metric: '16', label: 'Automated Tests' },
       { metric: '0', label: 'Accessibility Violations' },
     ],
+    demoUrl: 'https://youtu.be/d7tiguM-MkM',
     thumbnail: '/projects/onboarding-copilot/ask-answer.png',
     thumbnailAlt:
       'Onboarding Copilot answering a question with cited table and column sources open',
