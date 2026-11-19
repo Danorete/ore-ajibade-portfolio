@@ -210,7 +210,7 @@ export const projects: Project[] = [
   {
     title: 'PromptPath Onboarding Copilot',
     blurb:
-      'Built at HackATL 2026, where I led the team. An onboarding assistant that maps an unfamiliar dataset for a new hire, strips sensitive values from questions before they reach a model, and cites the table and column behind every answer. Built in one day after a Saturday pivot.',
+      'Built at HackATL 2026, where I led the team. PromptPath began as a practice console where a learner directs an AI coding agent through realistic intern tasks and a manager reviews the result (shown in the video). After mentor feedback on Saturday we pivoted to the Onboarding Copilot: an assistant that maps an unfamiliar dataset for a new hire, strips sensitive values from questions before they reach a model, and cites the table and column behind every answer. The Copilot was built in one day.',
     tags: ['Streamlit', 'Claude API', 'Python', 'Data Privacy', 'Team Leadership'],
     highlights: [
       { metric: '1 day', label: 'Build Time' },
