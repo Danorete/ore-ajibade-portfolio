@@ -120,7 +120,7 @@ export const projects: Project[] = [
     title: 'Microsoft AI Hackathon Winner (Agent-A-Thon)',
     award: '1st Place',
     blurb:
-      'Won 1st place in a live 60-minute sprint. Built an AI agent that scores resumes 1–100 and automates calendar scheduling for recruiters.',
+      'Won 1st place in a live 60-minute sprint. Built an AI agent that scores resumes 1–100 and automates calendar scheduling for recruiters. The prize included a Microsoft Surface Pro 12-inch.',
     tags: [
       'Microsoft Copilot Studio',
       'AI Agents',
@@ -133,6 +133,9 @@ export const projects: Project[] = [
       { metric: '60 min', label: 'Live Sprint' },
       { metric: '1–100', label: 'Resume Scoring' },
     ],
+    thumbnail: '/projects/agent-a-thon/winners-group.jpg',
+    thumbnailAlt:
+      'Group photo from the Microsoft x NSBE Agent-A-Thon, with attendees holding prize tote bags on stage',
   },
   {
     title: 'AI-Powered RFM Customer Segmentation Dashboard',
