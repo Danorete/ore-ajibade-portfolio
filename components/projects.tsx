@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Code, ExternalLink, Trophy } from 'lucide-react'
+import { ArrowRight, Code, ExternalLink, Play, Trophy } from 'lucide-react'
 import { projects } from '@/lib/data'
 import { getCardThumbnail } from '@/lib/piedmont-media'
 import { DemoClip } from './demo-clip'
@@ -87,7 +87,7 @@ export function Projects() {
                 ))}
               </div>
 
-              {(p.liveUrl || p.repoUrl || p.detailHref) && (
+              {(p.liveUrl || p.repoUrl || p.detailHref || p.demoUrl) && (
                 <div className="flex flex-wrap gap-4 border-t border-border pt-4">
                   {p.detailHref && (
                     <Link
@@ -107,6 +107,17 @@ export function Projects() {
                     >
                       <ExternalLink className="size-3.5" />
                       Live Demo
+                    </a>
+                  )}
+                  {p.demoUrl && (
+                    <a
+                      href={p.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary transition-colors hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                      <Play className="size-3.5" />
+                      Watch demo
                     </a>
                   )}
                   {p.repoUrl && (
