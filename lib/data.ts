@@ -140,7 +140,7 @@ export const projects: Project[] = [
     title: 'Microsoft AI Hackathon Winner (Agent-A-Thon)',
     award: '1st Place',
     blurb:
-      'Won 1st place in a live 60-minute sprint. Built an AI agent that scores resumes 1–100 and automates calendar scheduling for recruiters. The prize included a Microsoft Surface Pro 12-inch.',
+      'Won 1st place in a live 60-minute sprint with an AI agent that scores resumes 1–100 and automates calendar scheduling for recruiters. The prize included a Microsoft Surface Pro 12-inch.',
     tags: [
       'Microsoft Copilot Studio',
       'AI Agents',
@@ -160,7 +160,7 @@ export const projects: Project[] = [
   {
     title: 'AI-Powered RFM Customer Segmentation Dashboard',
     blurb:
-      'Segmented 5,878 customers from 1M+ Online Retail II transactions with RFM scoring. The decision memo says to protect the 2,530 Champions and Loyal Customers behind 84.7% of revenue and win back the 683 Can\'t Lose Them and At Risk customers behind $1.66M in past spend. A Streamlit dashboard serves the segment table, and a Claude summary drafts plain-language actions per segment.',
+      'Segmented 5,878 customers from 1M+ Online Retail II transactions with RFM scoring, with a memo to protect the 2,530 Champions and Loyal Customers behind 84.7% of revenue and win back the 683 Can\'t Lose Them and At Risk customers behind $1.66M in past spend. A Streamlit dashboard serves the segment table, and a Claude API summary drafts plain-language actions per segment.',
     tags: ['Python', 'pandas', 'Streamlit', 'Claude API', 'RFM Segmentation'],
     liveUrl: 'https://ore-rfm-dashboard.streamlit.app/',
     repoUrl: 'https://github.com/Danorete/AI-RFM-Dashboard',
@@ -176,7 +176,7 @@ export const projects: Project[] = [
   {
     title: 'What My Skips Say About How I Listen',
     blurb:
-      'A Tableau Public dashboard built from a full year of my own Spotify history (Nov 2025 to Nov 2026). Cleaned and validated in Python, then used to ask when I explore and when I settle in: I skip 47% of streams overall, but only about 26% between midnight and 5 AM versus about 54% from 10 AM to 6 PM.',
+      'A Tableau Public dashboard built from a year of my own Spotify history (Nov 2025 to Nov 2026), cleaned and validated in Python. I skip 47% of streams overall, but only about 26% between midnight and 5 AM versus about 54% from 10 AM to 6 PM.',
     tags: ['Tableau', 'Python', 'pandas', 'Data Validation', 'Data Storytelling'],
     liveUrl:
       'https://public.tableau.com/views/Book1_17941744917780/Dashboard1?:language=en-US&:display_count=n',
@@ -199,7 +199,7 @@ export const projects: Project[] = [
   {
     title: 'MaternalGrid',
     blurb:
-      'Built at HackHers 2026 (HealthHER track). A planning tool that shows health planners where Georgia women live too far from labor and delivery care, and lets them simulate closing or opening a delivering hospital to see how access changes. Travel times are modeled, not routed drive times.',
+      'Built at HackHers 2026 (HealthHER track): a planning tool that shows where Georgia women live too far from labor and delivery care and lets planners simulate closing or opening a delivering hospital. Travel times are modeled, not routed drive times.',
     tags: ['Streamlit', 'Python', 'PostGIS', 'TypeScript', 'Geospatial Analysis'],
     liveUrl: '/projects/maternalgrid/index.html',
     repoUrl: 'https://github.com/Danorete/maternalgrid',
@@ -229,7 +229,7 @@ export const projects: Project[] = [
   {
     title: 'PromptPath Onboarding Copilot',
     blurb:
-      'Built at HackATL 2026, where I led the team: PromptPath began as a practice console where a learner directs an AI coding agent and a manager reviews the result (shown in the video). After mentor feedback we pivoted to the Onboarding Copilot, which maps an unfamiliar dataset for a new hire, strips sensitive values from questions before they reach a model, and cites the table and column behind every answer. The Copilot was built in one day.',
+      'I led the HackATL 2026 team through a Saturday pivot from PromptPath, a practice console where a learner directs an AI coding agent and a manager reviews the result (shown in the video), to a privacy-first Onboarding Copilot. The Copilot, built in one day, maps an unfamiliar dataset for a new hire, strips sensitive values from questions before they reach a model, and cites the table and column behind every answer.',
     tags: ['Streamlit', 'Claude API', 'Python', 'Data Privacy', 'Team Leadership'],
     highlights: [
       { metric: '1 day', label: 'Build Time' },
@@ -264,9 +264,7 @@ export const skillCategories: SkillCategory[] = [
       'OpenAI API',
       'Ollama',
       'LM Studio',
-      'Prompt Engineering',
-      'Agent Development',
-      'AI agent prompting',
+      'Prompt engineering & AI agent development',
     ],
   },
   {
@@ -283,7 +281,6 @@ export const skillCategories: SkillCategory[] = [
       'RFM Segmentation',
       'Descriptive Statistics',
       'Gap Analysis',
-      'Data analysis and visualization',
       'Financial Metrics (ROI, Margins)',
     ],
   },

@@ -9,6 +9,8 @@ type SectionProps = {
   intro?: string
   children: ReactNode
   className?: string
+  /** Tighter vertical padding for sections with little content. */
+  compact?: boolean
 }
 
 /**
@@ -23,6 +25,7 @@ export function Section({
   intro,
   children,
   className,
+  compact = false,
 }: SectionProps) {
   return (
     <section
@@ -30,7 +33,12 @@ export function Section({
       aria-labelledby={`${id}-title`}
       className={cn('border-t border-border', className)}
     >
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24 lg:grid lg:grid-cols-12 lg:gap-x-10">
+      <div
+        className={cn(
+          'mx-auto max-w-6xl px-4 sm:px-6 lg:grid lg:grid-cols-12 lg:gap-x-10',
+          compact ? 'py-12 md:py-16' : 'py-16 md:py-24',
+        )}
+      >
         <header className="lg:col-span-3">
           <div className="lg:sticky lg:top-24">
             <p className="eyebrow numeric">

@@ -44,6 +44,7 @@ export function ContactFooter() {
   return (
     <Section
       id="contact"
+      className="[&>div]:pb-12 md:[&>div]:pb-16"
       index="07"
       label="Contact"
       title="Let's build something intelligent"

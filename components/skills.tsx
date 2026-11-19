@@ -24,7 +24,12 @@ export function Skills() {
               key={c.name}
               className="grid gap-3 border-t border-border py-6 first:border-t-foreground md:grid-cols-[11rem_1fr] md:gap-8"
             >
-              <dt className="eyebrow !text-foreground">{c.name}</dt>
+              <dt>
+                <span className="eyebrow block !text-foreground">{c.name}</span>
+                <span className="numeric mt-1 block font-mono text-xs text-muted-foreground">
+                  {String(c.skills.length).padStart(2, '0')} items
+                </span>
+              </dt>
               <dd>
                 {isCerts ? (
                   <ul className="space-y-2">

@@ -70,6 +70,7 @@ export function Resume() {
   return (
     <Section
       id="resume"
+      compact
       index="06"
       label="Resume"
       title="Read the full story"
@@ -91,7 +92,7 @@ export function Resume() {
           Download PDF
         </button>
       </div>
-      <p className="mt-4 max-w-md text-sm text-muted-foreground">
+      <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
         Download PDF opens your browser&apos;s print dialog. Choose &ldquo;Save as
         PDF&rdquo; as the destination.
       </p>
