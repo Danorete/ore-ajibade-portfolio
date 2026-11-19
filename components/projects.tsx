@@ -93,6 +93,23 @@ function CaseSummary({
             ))}
           </dl>
 
+          {(p.architecture || p.validated) && (
+            <dl className="mt-5 space-y-3 border-t border-border pt-4 text-sm leading-relaxed">
+              {p.architecture && (
+                <div>
+                  <dt className="eyebrow mb-1">Architecture</dt>
+                  <dd>{p.architecture}</dd>
+                </div>
+              )}
+              {p.validated && (
+                <div>
+                  <dt className="eyebrow mb-1">Validated</dt>
+                  <dd>{p.validated}</dd>
+                </div>
+              )}
+            </dl>
+          )}
+
           <p className="mt-5 font-mono text-xs leading-relaxed text-muted-foreground">
             <span className="eyebrow mr-2">Stack</span>
             {p.tags.join(', ')}
@@ -156,7 +173,7 @@ function ProjectLinks({ project: p }: { project: Project }) {
     'text-link inline-flex min-h-11 items-center gap-1 text-sm font-medium'
   const external = { target: '_blank', rel: 'noopener noreferrer' } as const
 
-  if (!p.detailHref && !p.liveUrl && !p.repoUrl) return null
+  if (!p.detailHref && !p.liveUrl && !p.repoUrl && !p.proofUrl && !p.repoNote) return null
 
   return (
     <ul className="mt-2 flex flex-wrap gap-x-6">
@@ -176,12 +193,25 @@ function ProjectLinks({ project: p }: { project: Project }) {
           </a>
         </li>
       )}
+      {p.proofUrl && (
+        <li>
+          <a href={p.proofUrl.href} {...external} className={linkClass}>
+            {p.proofUrl.label}
+            <ArrowUpRight aria-hidden className="size-3.5" />
+          </a>
+        </li>
+      )}
       {p.repoUrl && (
         <li>
           <a href={p.repoUrl} {...external} className={linkClass}>
             Code
             <ArrowUpRight aria-hidden className="size-3.5" />
           </a>
+        </li>
+      )}
+      {p.repoNote && !p.repoUrl && (
+        <li className="inline-flex min-h-11 items-center text-sm text-muted-foreground">
+          Code: {p.repoNote.toLowerCase()}
         </li>
       )}
     </ul>

@@ -112,6 +112,14 @@ export type Project = {
   thumbnailAlt?: string
   video?: { mp4: string; poster: string; caption: string }
   youtube?: { id: string; title: string; poster: string }
+  /** What was built, in one line. */
+  architecture?: string
+  /** How it was checked, including stated limits. */
+  validated?: string
+  /** Shown instead of a code link when the repo is private. */
+  repoNote?: string
+  /** An extra public link that verifies the claim. */
+  proofUrl?: { href: string; label: string }
 }
 
 export const projects: Project[] = [
@@ -127,6 +135,10 @@ export const projects: Project[] = [
       'Project management',
       'Cybersecurity',
     ],
+    architecture:
+      'Four defense layers scored against the real visits, then a rule tested on days it had never seen.',
+    validated:
+      '54/54 attacks caught and 0 false alarms. Earlier findings were rechecked against the raw files, which fixed one count (92 tickets to replace, not 96).',
     highlights: [
       { metric: '54/54', label: 'Attacks Caught' },
       { metric: '0', label: 'False Alarms' },
@@ -148,6 +160,11 @@ export const projects: Project[] = [
       'Outlook API',
       'NSBE',
     ],
+    architecture:
+      'One Copilot Studio agent with two jobs, resume scoring from 1 to 100 and recruiter calendar scheduling, built with Python and the Outlook API.',
+    validated:
+      'Placed 1st at the Microsoft x NSBE Agent-A-Thon, a live 60-minute sprint.',
+    proofUrl: { href: 'https://www.linkedin.com/posts/ore-ajibade_nsbe-microsoftcopilotstudio-aiagents-activity-7441836903118811136-feb-', label: 'LinkedIn post' },
     highlights: [
       { metric: '1st', label: 'Place Winner' },
       { metric: '60 min', label: 'Live Sprint' },
@@ -167,6 +184,10 @@ export const projects: Project[] = [
     thumbnail: '/projects/rfm-dashboard/card.jpg',
     thumbnailAlt:
       'Customer Segment AI Insights dashboard with an RFM segment table and a bar chart of customers per segment',
+    architecture:
+      'A pandas pipeline cleans 1,067,371 rows to 779,425, scores recency, frequency, and spend in quintiles, and feeds a Streamlit dashboard. The Claude summary sees segment counts only.',
+    validated:
+      'Segments sum to all 5,878 customers and $17,374,804.27 in revenue. The memo\'s win-back offers need a 60-day holdout test before any lift is claimed.',
     highlights: [
       { metric: '5,878', label: 'Customers Segmented' },
       { metric: '77.2%', label: 'Revenue from Top 20%' },
@@ -181,6 +202,10 @@ export const projects: Project[] = [
     liveUrl:
       'https://public.tableau.com/views/Book1_17941744917780/Dashboard1?:language=en-US&:display_count=n',
     repoUrl: 'https://github.com/Danorete/spotify-listening-bi',
+    architecture:
+      'A Python pipeline turns the raw Spotify export into aggregated tables, which feed a two-page Tableau Public dashboard.',
+    validated:
+      '0 duplicates, 0 nulls, and 9 of 9 export files combined. The 32-day December gap is flagged, not filled, and UTC is converted to Eastern.',
     highlights: [
       { metric: '87,748', label: 'Streams Analyzed' },
       { metric: '2,071', label: 'Hours Listened' },
@@ -206,6 +231,10 @@ export const projects: Project[] = [
     thumbnail: '/projects/maternalgrid/dashboard.jpg',
     thumbnailAlt:
       'MaternalGrid dashboard showing a map of Georgia counties beyond a 30-minute drive to labor and delivery care, with 74 of 159 counties flagged',
+    architecture:
+      'A Streamlit scenario app, an offline dashboard, and a Postgres/PostGIS migration with a TypeScript API layer.',
+    validated:
+      'An 11-check verification gate on the migration, with the baseline reproduced from GDPH OASIS 2024 and March of Dimes 2026.',
     highlights: [
       { metric: '159', label: 'Georgia Counties' },
       { metric: '74', label: 'Counties Beyond 30 Min' },
@@ -217,6 +246,11 @@ export const projects: Project[] = [
     blurb:
       'A reproducible benchmark of four AI models extracting structured data from resumes, scored against a hand-written answer key with blind peer judging. Three of four models passed every resume; speed and output size, not accuracy, separated them.',
     tags: ['Python', 'LLM Evaluation', 'Prompt Engineering', 'Streamlit', 'Benchmarking'],
+    architecture:
+      'A Python harness runs 6 synthetic resumes through 4 models and 2 prompt versions, scored against a hand-written answer key, with a Streamlit dashboard.',
+    validated:
+      '192 blind LLM judgments plus a human review that has the final say. One run per condition, so results are observations, not proof.',
+    repoNote: 'Private repository',
     highlights: [
       { metric: '48', label: 'Extractions Scored' },
       { metric: '192', label: 'Blind Judgments' },
@@ -231,6 +265,11 @@ export const projects: Project[] = [
     blurb:
       'I led the HackATL 2026 team through a Saturday pivot from PromptPath, a practice console where a learner directs an AI coding agent and a manager reviews the result (shown in the video), to a privacy-first Onboarding Copilot. The Copilot, built in one day, maps an unfamiliar dataset for a new hire, strips sensitive values from questions before they reach a model, and cites the table and column behind every answer.',
     tags: ['Streamlit', 'Claude API', 'Python', 'Data Privacy', 'Team Leadership'],
+    architecture:
+      'Rule-based sensitive-field detection and redaction run before any model call. Answers must cite [table.column], and a source view flags citations not in the data.',
+    validated:
+      '16 automated tests, including that an SSN or email in a question never reaches the model or the log. An accessibility scan found 0 violations across 7 screens.',
+    repoNote: 'Private repository',
     highlights: [
       { metric: '1 day', label: 'Build Time' },
       { metric: '16', label: 'Automated Tests' },
