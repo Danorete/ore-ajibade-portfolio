@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ArrowRight, Code, ExternalLink, Trophy } from 'lucide-react'
 import { projects } from '@/lib/data'
 import { getCardThumbnail } from '@/lib/piedmont-media'
+import { DemoClip } from './demo-clip'
 import { SectionHeading } from './section-heading'
 
 export function Projects() {
@@ -25,7 +26,14 @@ export function Projects() {
               key={p.title}
               className="glass group relative flex flex-col gap-5 overflow-hidden rounded-2xl p-6 transition-all hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10"
             >
-              {thumb && (
+              {p.video ? (
+                <DemoClip
+                  mp4={p.video.mp4}
+                  gif={null}
+                  poster={p.video.poster}
+                  caption={p.video.caption}
+                />
+              ) : thumb ? (
                 <div className="-mx-6 -mt-6 overflow-hidden border-b border-border">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -37,7 +45,7 @@ export function Projects() {
                     className="aspect-[16/9] h-auto w-full object-cover"
                   />
                 </div>
-              )}
+              ) : null}
 
               {p.award && (
                 <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-primary">

@@ -91,6 +91,7 @@ export type Project = {
   detailHref?: string
   thumbnail?: string
   thumbnailAlt?: string
+  video?: { mp4: string; poster: string; caption: string }
 }
 
 export const projects: Project[] = [
@@ -149,7 +150,7 @@ export const projects: Project[] = [
   {
     title: 'What My Skips Say About How I Listen',
     blurb:
-      'A Tableau Public dashboard built from a full year of my own Spotify history (Nov 2025 to Nov 2026). Cleaned and validated in Python, then used to ask when I explore and when I settle in: I skip 47% of streams overall, but only about 26% between midnight and 5 AM versus about 54% from 10 AM to 6 PM.',
+      'A Tableau Public dashboard built from a full year of my own Spotify history (Nov 2025 to Nov 2026). Cleaned and validated in Python, then used to ask when I explore and when I settle in: I skip 47% of streams overall, but only about 26% between midnight and 5 AM.',
     tags: ['Tableau', 'Python', 'pandas', 'Data Validation', 'Data Storytelling'],
     liveUrl:
       'https://public.tableau.com/views/Book1_17941744917780/Dashboard1?:language=en-US&:display_count=n',
@@ -162,6 +163,12 @@ export const projects: Project[] = [
     thumbnail: '/projects/spotify-listening-bi/overview.png',
     thumbnailAlt:
       'Overview page of the Spotify listening dashboard showing the 47% skip rate, daytime versus overnight comparison, skip rate by hour and monthly listening hours',
+    video: {
+      mp4: '/projects/spotify-listening-bi/skips-demo.mp4',
+      poster: '/projects/spotify-listening-bi/skips-demo-poster.jpg',
+      caption:
+        'A 28-second walkthrough: I skip almost half of what I play, and it depends on the time of day.',
+    },
   },
   {
     title: 'MaternalGrid',
