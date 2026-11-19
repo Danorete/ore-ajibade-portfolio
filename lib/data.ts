@@ -91,6 +91,7 @@ export type Project = {
   detailHref?: string
   thumbnail?: string
   thumbnailAlt?: string
+  video?: { mp4: string; poster: string; caption: string }
 }
 
 export const projects: Project[] = [
@@ -145,6 +146,69 @@ export const projects: Project[] = [
       { metric: '77.2%', label: 'Revenue from Top 20%' },
       { metric: '1M+', label: 'Transaction Records' },
     ],
+  },
+  {
+    title: 'What My Skips Say About How I Listen',
+    blurb:
+      'A Tableau Public dashboard built from a full year of my own Spotify history (Nov 2025 to Nov 2026). Cleaned and validated in Python, then used to ask when I explore and when I settle in: I skip 47% of streams overall, but only about 26% between midnight and 5 AM versus about 54% from 10 AM to 6 PM.',
+    tags: ['Tableau', 'Python', 'pandas', 'Data Validation', 'Data Storytelling'],
+    liveUrl:
+      'https://public.tableau.com/views/Book1_17941744917780/Dashboard1?:language=en-US&:display_count=n',
+    repoUrl: 'https://github.com/Danorete/spotify-listening-bi',
+    highlights: [
+      { metric: '87,748', label: 'Streams Analyzed' },
+      { metric: '2,071', label: 'Hours Listened' },
+      { metric: '47%', label: 'Streams Skipped' },
+    ],
+    thumbnail: '/projects/spotify-listening-bi/overview.png',
+    thumbnailAlt:
+      'Overview page of the Spotify listening dashboard showing the 47% skip rate, daytime versus overnight comparison, skip rate by hour and monthly listening hours',
+    video: {
+      mp4: '/projects/spotify-listening-bi/skips-demo.mp4',
+      poster: '/projects/spotify-listening-bi/skips-demo-poster.jpg',
+      caption:
+        'A 28-second walkthrough: I skip almost half of what I play, and it depends on the time of day.',
+    },
+  },
+  {
+    title: 'MaternalGrid',
+    blurb:
+      'Built at HackHers 2026 (HealthHER track). A planning tool that shows health planners where Georgia women live too far from labor and delivery care, and lets them simulate closing or opening a delivering hospital to see how access changes. Travel times are modeled, not routed drive times.',
+    tags: ['Streamlit', 'Python', 'PostGIS', 'TypeScript', 'Geospatial Analysis'],
+    repoUrl: 'https://github.com/Danorete/maternalgrid',
+    highlights: [
+      { metric: '159', label: 'Georgia Counties' },
+      { metric: '74', label: 'Counties Beyond 30 Min' },
+      { metric: '70', label: 'Maternity Care Deserts' },
+    ],
+  },
+  {
+    title: 'Resume Extraction Field Notes',
+    blurb:
+      'A reproducible benchmark of four AI models extracting structured data from resumes, scored against a hand-written answer key with blind peer judging. Three of four models passed every resume; speed and output size, not accuracy, separated them.',
+    tags: ['Python', 'LLM Evaluation', 'Prompt Engineering', 'Streamlit', 'Benchmarking'],
+    highlights: [
+      { metric: '48', label: 'Extractions Scored' },
+      { metric: '192', label: 'Blind Judgments' },
+      { metric: '3 of 4', label: 'Models Passed All' },
+    ],
+    thumbnail: '/projects/llm-judge-experiment/dashboard.png',
+    thumbnailAlt:
+      'Streamlit dashboard comparing model accuracy, latency and token use across resume extraction runs',
+  },
+  {
+    title: 'PromptPath Onboarding Copilot',
+    blurb:
+      'Built at HackATL 2026, where I led the team. An onboarding assistant that maps an unfamiliar dataset for a new hire, strips sensitive values from questions before they reach a model, and cites the table and column behind every answer. Built in one day after a Saturday pivot.',
+    tags: ['Streamlit', 'Claude API', 'Python', 'Data Privacy', 'Team Leadership'],
+    highlights: [
+      { metric: '1 day', label: 'Build Time' },
+      { metric: '16', label: 'Automated Tests' },
+      { metric: '0', label: 'Accessibility Violations' },
+    ],
+    thumbnail: '/projects/onboarding-copilot/ask-answer.png',
+    thumbnailAlt:
+      'Onboarding Copilot answering a question with cited table and column sources open',
   },
 ]
 
