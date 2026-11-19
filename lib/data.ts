@@ -31,7 +31,7 @@ export const heroFacts = [
   {
     label: 'Now',
     value: 'AI Trainer, Handshake AI · Student Ambassador, GSU Career Services',
-    detail: 'Both Jul 2026 – Present',
+    detail: 'Handshake Jul 2026 – Present · Career Services Aug 2026 – Present',
   },
   {
     label: 'Recent',
@@ -63,14 +63,13 @@ export const experiences: Experience[] = [
     points: [
       'Evaluated 200+ AI model outputs at 25 to 30 hours weekly, scoring against rubrics and flagging unsupported claims.',
       'Verified model-generated code for correctness and fact-checked outputs against reliable sources, raising output accuracy across programming and subject areas.',
-      'Completed 300 AI evaluation tasks in under two weeks on a remote contract project improving model accuracy.',
     ],
     tags: ['Model evaluation', 'Code review', 'Fact checking', 'Prompt writing'],
   },
   {
     company: 'GSU Career Services Center',
     role: 'Student Ambassador',
-    period: 'Jul 2026 – Present',
+    period: 'Aug 2026 – Present',
     location: 'Atlanta, GA',
     points: [
       'Helped 50 to 100 students every week with resume reviews, interview advice, and career center services at Georgia State.',
@@ -322,9 +321,13 @@ export const projects: Project[] = [
   {
     title: 'AI-Powered Python Study Tutor',
     blurb:
-      'A full-stack local web app that generates Python practice problems through the Claude API, built to learn Python fundamentals.',
-    tags: ['Python', 'Claude API'],
-    highlights: [],
+      'A study app I built to practice Python fundamentals. It serves problems chapter by chapter, uses Claude to coach students with Socratic hints instead of giving answers, and adds spaced repetition, exam simulation, and progress tracking.',
+    tags: ['Python', 'JavaScript', 'Claude API', 'Spaced Repetition'],
+    highlights: [
+      { metric: '242', label: 'Practice Problems' },
+      { metric: '16', label: 'Textbook Topics' },
+      { metric: '3', label: 'Difficulty Levels' },
+    ],
   },
 ]
 
