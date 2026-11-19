@@ -1,8 +1,9 @@
 import Link from 'next/link'
-import { ArrowRight, Code, ExternalLink, Play, Trophy } from 'lucide-react'
+import { ArrowRight, Code, ExternalLink, Trophy } from 'lucide-react'
 import { projects } from '@/lib/data'
 import { getCardThumbnail } from '@/lib/piedmont-media'
 import { DemoClip } from './demo-clip'
+import { YouTubeClip } from './youtube-clip'
 import { SectionHeading } from './section-heading'
 
 export function Projects() {
@@ -26,7 +27,13 @@ export function Projects() {
               key={p.title}
               className="glass group relative flex flex-col gap-5 overflow-hidden rounded-2xl p-6 transition-all hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10"
             >
-              {p.video ? (
+              {p.youtube ? (
+                <YouTubeClip
+                  id={p.youtube.id}
+                  title={p.youtube.title}
+                  poster={p.youtube.poster}
+                />
+              ) : p.video ? (
                 <DemoClip
                   mp4={p.video.mp4}
                   gif={null}
@@ -87,7 +94,7 @@ export function Projects() {
                 ))}
               </div>
 
-              {(p.liveUrl || p.repoUrl || p.detailHref || p.demoUrl) && (
+              {(p.liveUrl || p.repoUrl || p.detailHref) && (
                 <div className="flex flex-wrap gap-4 border-t border-border pt-4">
                   {p.detailHref && (
                     <Link
@@ -107,17 +114,6 @@ export function Projects() {
                     >
                       <ExternalLink className="size-3.5" />
                       Live Demo
-                    </a>
-                  )}
-                  {p.demoUrl && (
-                    <a
-                      href={p.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary transition-colors hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    >
-                      <Play className="size-3.5" />
-                      Watch demo
                     </a>
                   )}
                   {p.repoUrl && (

@@ -92,7 +92,7 @@ export type Project = {
   thumbnail?: string
   thumbnailAlt?: string
   video?: { mp4: string; poster: string; caption: string }
-  demoUrl?: string
+  youtube?: { id: string; title: string; poster: string }
 }
 
 export const projects: Project[] = [
@@ -217,7 +217,11 @@ export const projects: Project[] = [
       { metric: '16', label: 'Automated Tests' },
       { metric: '0', label: 'Accessibility Violations' },
     ],
-    demoUrl: 'https://youtu.be/d7tiguM-MkM',
+    youtube: {
+      id: 'd7tiguM-MkM',
+      title: 'PromptPath Platform Demo',
+      poster: '/projects/onboarding-copilot/demo-poster.jpg',
+    },
     thumbnail: '/projects/onboarding-copilot/ask-answer.png',
     thumbnailAlt:
       'Onboarding Copilot answering a question with cited table and column sources open',
