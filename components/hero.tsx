@@ -1,131 +1,126 @@
 'use client'
 
-import {
-  ArrowRight,
-  BadgeCheck,
-  Database,
-  Download,
-  Mail,
-  MapPin,
-  Phone,
-  Share2,
-  Trophy,
-} from 'lucide-react'
-import { heroStats, profile } from '@/lib/data'
+import { Fragment } from 'react'
+import { heroFacts, heroStats, profile } from '@/lib/data'
 
-const statIcons = {
-  trophy: Trophy,
-  database: Database,
-  graph: Share2,
-  badge: BadgeCheck,
-} as const
+// Keep codes such as "AZ-900" on one line, but still allow a break after them.
+function NoBreakCodes({ text }: { text: string }) {
+  return text.split(' ').map((word, i, all) => (
+    <Fragment key={`${word}-${i}`}>
+      <span className={word.includes('-') ? 'whitespace-nowrap' : undefined}>
+        {word}
+      </span>
+      {i < all.length - 1 ? ' ' : ''}
+    </Fragment>
+  ))
+}
 
+/*
+ * Framing: from tablet width up the stat strip sits at the top of the right
+ * column, above the portrait. The numbers are then visible on any realistic
+ * viewport height and the fold can only cut through the photo. On phones the
+ * portrait comes first and the strip follows below the first screen.
+ */
 export function Hero() {
   return (
     <section
       id="about"
-      className="relative mx-auto flex max-w-6xl flex-col items-start gap-8 px-4 pt-32 pb-8 sm:px-6 md:pt-40 md:pb-10"
+      aria-labelledby="hero-title"
+      className="mx-auto max-w-6xl px-4 pt-8 pb-14 sm:px-6 md:pt-10 md:pb-16"
     >
-      <div className="flex w-full flex-col-reverse items-start gap-8 md:flex-row md:justify-between">
-        <div className="flex flex-col items-start gap-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1.5 text-sm font-medium text-primary">
-            <span className="relative flex size-2">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
-              <span className="relative inline-flex size-2 rounded-full bg-primary" />
-            </span>
-            {profile.status}
-          </div>
+      <p className="eyebrow flex items-center gap-2.5">
+        <span aria-hidden className="size-1.5 bg-primary" />
+        {profile.status}
+      </p>
 
-          <div className="max-w-3xl">
-            <h1 className="text-pretty text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-6xl">
-              Meet{' '}
-              <span className="glow-text bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
-                {profile.name}
-              </span>
-            </h1>
-            <p className="mt-4 text-pretty text-lg font-semibold text-foreground sm:text-xl">
-              {profile.headline}
-            </p>
-            <p className="mt-4 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {profile.subtitle}
-            </p>
-          </div>
+      <div className="mt-6 grid gap-10 md:grid-cols-12 md:gap-x-8 lg:gap-x-10">
+        <div className="md:col-span-8">
+          <h1
+            id="hero-title"
+            className="font-display text-[clamp(3.25rem,8vw,6rem)] font-medium leading-[0.92] tracking-[-0.035em]"
+          >
+            {profile.name}
+          </h1>
+          <p className="mt-5 max-w-2xl font-display text-2xl leading-snug tracking-[-0.01em] sm:text-[1.75rem]">
+            {profile.headline}
+          </p>
 
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
-            <span className="inline-flex items-center gap-1.5">
-              <MapPin className="size-4 text-primary" />
-              {profile.location}
-            </span>
-            <a
-              href={`mailto:${profile.email}`}
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-            >
-              <Mail className="size-4 text-primary" />
-              {profile.email}
-            </a>
-            <a
-              href={profile.phoneHref}
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-foreground"
-            >
-              <Phone className="size-4 text-primary" />
-              {profile.phone}
-            </a>
-          </div>
+          <dl className="mt-8 border-t border-border">
+            {heroFacts.map((f) => (
+              <div
+                key={f.label}
+                className="grid gap-1 border-b border-border py-2.5 sm:grid-cols-[7rem_1fr] sm:gap-6"
+              >
+                <dt className="eyebrow pt-1">{f.label}</dt>
+                <dd>
+                  <span className="font-medium">{f.value}</span>
+                  <span className="numeric mt-0.5 block font-mono text-xs text-muted-foreground">
+                    {f.detail}
+                  </span>
+                </dd>
+              </div>
+            ))}
+          </dl>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="mt-5 flex flex-wrap items-center gap-3">
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:shadow-primary/40 hover:brightness-110"
+              className="inline-flex min-h-11 items-center bg-foreground px-6 text-sm font-medium text-background transition-opacity hover:opacity-85"
             >
-              Explore Projects
-              <ArrowRight className="size-4" />
-            </a>
-            <a
-              href="#experience"
-              className="inline-flex items-center gap-2 rounded-lg border border-border bg-card/50 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
-            >
-              View Experience
+              View projects
             </a>
             <button
               type="button"
               onClick={() => window.dispatchEvent(new Event('open-resume'))}
-              className="inline-flex items-center gap-2 rounded-lg border border-border bg-card/50 px-5 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+              className="inline-flex min-h-11 items-center border border-foreground px-6 text-sm font-medium transition-colors hover:bg-foreground hover:text-background"
             >
-              <Download className="size-4" />
-              Download Resume (PDF)
+              Open resume
             </button>
+            <a
+              href="#contact"
+              className="text-link inline-flex min-h-11 items-center text-sm font-medium sm:ml-2"
+            >
+              Get in touch
+            </a>
           </div>
+
+          <p className="numeric mt-2 flex flex-wrap gap-x-5 gap-y-0 font-mono text-xs text-muted-foreground">
+            <span className="inline-flex min-h-11 items-center">{profile.location}</span>
+            <a className="text-link inline-flex min-h-11 items-center" href={`mailto:${profile.email}`}>
+              {profile.email}
+            </a>
+            <a className="text-link inline-flex min-h-11 items-center" href={profile.phoneHref}>
+              {profile.phone}
+            </a>
+          </p>
         </div>
 
-        <img
-          src="/ore-ajibade.png"
-          alt="Professional portrait of Ore Ajibade"
-          className="w-40 shrink-0 rounded-2xl border border-primary/30 object-cover shadow-xl shadow-primary/15 sm:w-48 md:w-60"
-        />
-      </div>
+        <div className="flex flex-col gap-6 md:col-span-4">
+          <img
+            src="/ore-ajibade.png"
+            alt="Professional portrait of Ore Ajibade"
+            width={682}
+            height={1024}
+            className="aspect-[4/3] w-full border border-border object-cover object-top sm:aspect-[16/9] md:aspect-[4/3]"
+          />
 
-      <div className="grid w-full grid-cols-2 gap-3 pt-4 md:grid-cols-4">
-        {heroStats.map((s) => {
-          const Icon = statIcons[s.icon]
-          return (
-            <div
-              key={s.label}
-              className="glass flex flex-col gap-2 rounded-xl p-4 transition-colors hover:border-primary/40"
-            >
-              <span className="flex items-center gap-2">
-                <Icon className="size-4 text-primary" />
-                <span className="font-mono text-xl font-bold text-primary">
+          <dl className="grid grid-cols-2 border-t border-foreground md:order-first">
+            {heroStats.map((s) => (
+              <div
+                key={s.label}
+                className="flex min-w-0 flex-col border-b border-border py-4 odd:pr-4 even:border-l even:pl-4"
+              >
+                <dt className="order-2 mt-1 text-balance text-sm leading-snug text-muted-foreground">
+                  <NoBreakCodes text={s.label} />
+                </dt>
+                <dd className="numeric order-1 font-mono text-3xl leading-none tracking-tight">
                   {s.metric}
-                </span>
-              </span>
-              <span className="text-xs leading-snug text-muted-foreground">
-                {s.label}
-              </span>
-            </div>
-          )
-        })}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </div>
-
     </section>
   )
 }

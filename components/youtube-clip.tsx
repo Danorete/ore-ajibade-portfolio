@@ -16,7 +16,7 @@ export function YouTubeClip({ id, title, poster }: YouTubeClipProps) {
   const [playing, setPlaying] = useState(false)
 
   return (
-    <div className="-mx-6 -mt-6 overflow-hidden border-b border-border">
+    <div className="overflow-hidden">
       <div className="relative aspect-video bg-black">
         {playing ? (
           <iframe
@@ -31,7 +31,7 @@ export function YouTubeClip({ id, title, poster }: YouTubeClipProps) {
             type="button"
             onClick={() => setPlaying(true)}
             aria-label={`Play video: ${title}`}
-            className="group absolute inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="group absolute inset-0 focus-visible:outline-offset-[-4px]"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -42,8 +42,8 @@ export function YouTubeClip({ id, title, poster }: YouTubeClipProps) {
               loading="lazy"
               className="h-full w-full object-cover"
             />
-            <span className="absolute inset-0 grid place-items-center bg-black/20 transition-colors group-hover:bg-black/10">
-              <span className="grid size-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-lg transition-transform group-hover:scale-110">
+            <span className="absolute inset-0 grid place-items-center bg-black/25 transition-colors group-hover:bg-black/15">
+              <span className="grid size-14 place-items-center bg-foreground text-background">
                 <Play className="ml-0.5 size-6 fill-current" />
               </span>
             </span>
