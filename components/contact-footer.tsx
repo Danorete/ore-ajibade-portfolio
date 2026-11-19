@@ -48,7 +48,7 @@ export function ContactFooter() {
       index="07"
       label="Contact"
       title="Let's build something intelligent"
-      intro="Open to Fall 2026 / 2027 AI & Data Engineering roles. Reach out and I'll get back to you quickly."
+      intro="Open to Summer 2027 analytics internships and Fall 2026 / 2027 AI & Data Engineering roles. Reach out and I'll get back to you quickly."
     >
       <div className="grid gap-12 md:grid-cols-2 md:gap-10">
         <dl className="border-t border-foreground">

@@ -11,7 +11,7 @@ const DEMO_URL = ''
 export const metadata: Metadata = {
   title: 'The Piedmont Ledger — Ore Ajibade',
   description:
-    'A team investigation of a simulated ticketing-system breach, with a tested alert and a six-week plan. 2nd place at the Microsoft × AIS GSU Data Dive, Cybersecurity track.',
+    'A team investigation of a simulated ticketing-system breach, with a tested alert and a six-week plan. Honorable Mention at the Microsoft × AIS GSU Data Dive, Cybersecurity track.',
 }
 
 const skillBlocks = [
@@ -105,7 +105,7 @@ export default function PiedmontLedgerPage() {
       <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 md:py-16">
         {/* Hero */}
         <section className="flex flex-col gap-6" aria-labelledby="piedmont-title">
-          <p className="eyebrow !text-foreground">2nd place</p>
+          <p className="eyebrow !text-foreground">Honorable mention</p>
 
           <div className="flex flex-col gap-3">
             <h1

@@ -16,7 +16,7 @@ export function Projects() {
       index="02"
       label="Projects"
       title="Selected work"
-      intro="Case summaries with the outcome first. Placements are marked."
+      intro="Case summaries with the outcome first. Placements and awards are marked."
     >
       <ol className="space-y-16 md:space-y-20">
         {projects.map((p, i) => (

@@ -7,10 +7,11 @@ export const profile = {
   phoneHref: 'tel:+14702693298',
   github: 'https://github.com/danorete',
   linkedin: 'https://www.linkedin.com/in/ore-ajibade',
-  status: 'Seeking Fall 2026 / 2027 AI & Data Engineering Opportunities',
+  status:
+    'Seeking Summer 2027 analytics internships and Fall 2026 / 2027 AI & data engineering roles',
   headline: 'Bridging Data Analytics, Graph RAG & Intelligent AI Systems',
   subtitle:
-    'B.B.A. in Computer Information Systems (Data Innovation) at Georgia State University · AI Intern @ BalanX Bio · 1st Place Microsoft AI Hackathon Winner.',
+    'B.B.A. in Computer Information Systems (Data Innovation) at Georgia State University · Former AI Intern @ BalanX Bio · 1st Place Microsoft AI Hackathon Winner.',
 }
 
 export const heroStats = [
@@ -28,9 +29,9 @@ export const heroFacts = [
     detail: 'Expected May 2027',
   },
   {
-    label: 'Now',
+    label: 'Recent',
     value: 'AI Intern, BalanX Bio',
-    detail: 'Jul 2026 – Present · Atlanta, GA',
+    detail: 'Aug 2026 – Oct 2026 · Remote',
   },
   {
     label: 'Recognition',
@@ -52,15 +53,15 @@ export const experiences: Experience[] = [
   {
     company: 'BalanX Bio',
     role: 'AI Intern',
-    period: 'Jul 2026 – Present',
-    location: 'Atlanta, GA',
+    period: 'Aug 2026 – Oct 2026',
+    location: 'Remote',
     points: [
-      'Building an AI Health Digital Twin proof-of-concept to model individual health trajectories.',
-      'Engineered a Graph-based RAG pipeline with Neo4j for contextual retrieval over health knowledge.',
-      'Developed a Python (pandas / NumPy) synthetic Apple HealthKit pipeline aligned to CDC NHANES / WHO standards.',
-      'Authored a Claude Code technical knowledge base to accelerate team onboarding and documentation.',
+      'Contributed to an AI health digital twin proof of concept for an early-stage wearable team (graph-based RAG over a Neo4j knowledge graph), building the baseline statistics layer and the demo dashboard.',
+      "Built anomaly detection on a three-tier z-score scale from each user's own sample standard deviation, and cut false-positive trend alerts by gating least-squares slopes behind a two-standard-error threshold.",
+      'Shipped 108 automated tests covering statistics, the data contract, and end-to-end rendering, with computation isolated in a service layer so a mock-to-live API switch changes one function.',
+      'Built a GitHub knowledge base with Claude Code from 15+ documents, including a 60-page architecture specification, with a 100+ term glossary, and explained the baseline logic to nontechnical stakeholders.',
     ],
-    tags: ['Graph RAG', 'Neo4j', 'Python', 'Claude Code', 'HealthKit'],
+    tags: ['Python', 'pandas', 'NumPy', 'Streamlit', 'Altair', 'Claude Code'],
   },
   {
     company: 'The Coca-Cola Company',
@@ -68,34 +69,35 @@ export const experiences: Experience[] = [
     period: 'May 2025 – Jun 2026',
     location: 'Atlanta, GA',
     points: [
-      'Ranked in the top 5% of associates by weekly revenue across 500+ daily customer interactions, driving 10% YoY growth.',
-      'Optimized data-driven ordering with handheld inventory tech, reducing out-of-stocks by 25%.',
-      'Maintained 0.5% transaction variance on $1M+ in monthly volume and mentored new associates.',
+      'Ranked in the top 5% of associates by weekly revenue and outperformed the peer average by 40% during peak promotional cycles.',
+      'Contributed to a 10% year-over-year store revenue increase by building high-traffic product displays.',
+      'Cut out-of-stock occurrences by 25% by scanning shelf stock with handheld technology and ordering to demand and expiry.',
+      'Reconciled cash, product, and system records within the same shift, held register and inventory variance within 0.5%, and resolved $1,000+ in cumulative discrepancies across $1M in monthly store volume.',
     ],
-    tags: ['Analytics', 'Inventory Optimization', 'Financial Metrics'],
+    tags: ['Inventory Optimization', 'Variance Analysis', 'Transaction Reconciliation'],
   },
   {
     company: 'Association for Information Systems',
     role: 'Student Ambassador',
     period: 'Aug 2024 – May 2026',
-    location: 'Georgia State University',
+    location: 'Atlanta, GA',
     points: [
-      'Coordinated recruiter networking panels connecting students with industry professionals.',
-      'Facilitated technical workshops on data and information systems tooling.',
-      'Managed student membership data and event analytics.',
+      'Coordinated professional networking panels and tech workshops that connected CIS majors with industry recruiters.',
+      'Managed attendee registration and feedback data, graphing turnout and analyzing post-event feedback to align session topics with student career interests, and presented the findings to program leadership.',
     ],
-    tags: ['Leadership', 'Networking', 'Data Management'],
+    tags: ['Leadership', 'Event Analytics', 'Networking'],
   },
   {
     company: 'eXcelerate Computer Training School',
     role: 'Data Analytics Trainee',
     period: 'Aug 2024 – Nov 2024',
-    location: 'Remote',
+    location: 'Marietta, GA',
     points: [
-      'Wrote multi-join SQL queries against financial and credit-card datasets.',
-      'Performed exploratory data analysis (EDA) to surface transaction patterns and anomalies.',
+      'Analyzed date-based trends in Snowflake with DATEDIFF, DATEADD, and calculated fields, and corrected data-type mismatches that had returned silently wrong results.',
+      'Built and populated tables with CREATE and INSERT, and passed the qualification assessment at 80% or higher (certificate issued July 12, 2025).',
+      'Extended the training through independent study of multi-table joins, aggregates, and CAST, then applied them to the RFM and MaternalGrid pipelines.',
     ],
-    tags: ['SQL', 'EDA', 'Financial Data'],
+    tags: ['SQL', 'Snowflake', 'DDL / DML'],
   },
 ]
 
@@ -125,20 +127,14 @@ export type Project = {
 export const projects: Project[] = [
   {
     title: 'The Piedmont Ledger',
-    award: '2nd Place',
+    award: 'Honorable Mention',
     blurb:
       'A team investigation of a simulated ticketing-system breach, with a tested alert and a six-week plan',
-    tags: [
-      'Data analysis',
-      'Visualization',
-      'AI agent prompting',
-      'Project management',
-      'Cybersecurity',
-    ],
+    tags: ['Python (log analysis)', 'JavaScript', 'HTML / CSS', 'GSAP', 'Cybersecurity'],
     architecture:
-      'Four defense layers scored against the real visits, then a rule tested on days it had never seen.',
+      "Per-client baseline alerts, with a simple night-time rule as the comparison, and a fix that limits each API key to its own client's events.",
     validated:
-      '54/54 attacks caught and 0 false alarms. Earlier findings were rechecked against the raw files, which fixed one count (92 tickets to replace, not 96).',
+      '54/54 malicious requests flagged with 0 false alarms, against 106 alerts (52 of them false) from the night-time rule. The key limit would have blocked all 525 fake festival tickets.',
     highlights: [
       { metric: '54/54', label: 'Attacks Caught' },
       { metric: '0', label: 'False Alarms' },
@@ -152,18 +148,12 @@ export const projects: Project[] = [
     title: 'Microsoft AI Hackathon Winner (Agent-A-Thon)',
     award: '1st Place',
     blurb:
-      'Won 1st place in a live 60-minute sprint with an AI agent that scores resumes 1–100 and automates calendar scheduling for recruiters. The prize included a Microsoft Surface Pro 12-inch.',
-    tags: [
-      'Microsoft Copilot Studio',
-      'AI Agents',
-      'Python',
-      'Outlook API',
-      'NSBE',
-    ],
+      'Won 1st place against collegiate and industry professional teams in a 60-minute live build at the Microsoft x NSBE National Convention in Baltimore (Mar 2026), presenting a working AI convention companion to Microsoft judges. The prize included a Microsoft Surface Pro 12-inch.',
+    tags: ['Microsoft Copilot Studio', 'AI Agents', 'Outlook connector', 'NSBE'],
     architecture:
-      'One Copilot Studio agent with two jobs, resume scoring from 1 to 100 and recruiter calendar scheduling, built with Python and the Outlook API.',
+      'A Copilot Studio convention companion with a Career Prep module that scores resumes line by line (1 to 100) and offers personalized interview pathways, plus an Outlook connector that pushes event schedules to attendee calendars.',
     validated:
-      'Placed 1st at the Microsoft x NSBE Agent-A-Thon, a live 60-minute sprint.',
+      'Demoed a working app to Microsoft judges and placed 1st.',
     proofUrl: { href: 'https://www.linkedin.com/posts/ore-ajibade_nsbe-microsoftcopilotstudio-aiagents-activity-7441836903118811136-feb-', label: 'LinkedIn post' },
     highlights: [
       { metric: '1st', label: 'Place Winner' },
@@ -178,16 +168,16 @@ export const projects: Project[] = [
     title: 'AI-Powered RFM Customer Segmentation Dashboard',
     blurb:
       'Segmented 5,878 customers from 1M+ Online Retail II transactions with RFM scoring, with a memo to protect the 2,530 Champions and Loyal Customers behind 84.7% of revenue and win back the 683 Can\'t Lose Them and At Risk customers behind $1.66M in past spend. A Streamlit dashboard serves the segment table, and a Claude API summary drafts plain-language actions per segment.',
-    tags: ['Python', 'pandas', 'Streamlit', 'Claude API', 'RFM Segmentation'],
+    tags: ['Snowflake', 'SQL', 'Python', 'Power BI', 'Streamlit', 'Claude API'],
     liveUrl: 'https://ore-rfm-dashboard.streamlit.app/',
     repoUrl: 'https://github.com/Danorete/AI-RFM-Dashboard',
     thumbnail: '/projects/rfm-dashboard/card.jpg',
     thumbnailAlt:
       'Customer Segment AI Insights dashboard with an RFM segment table and a bar chart of customers per segment',
     architecture:
-      'A pandas pipeline cleans 1,067,371 rows to 779,425, scores recency, frequency, and spend in quintiles, and feeds a Streamlit dashboard. The Claude summary sees segment counts only.',
+      'A Snowflake and Python ETL cleans 1,067,371 raw records into 5,878 customers with a drop log, and a scoring script writes one results file. The Streamlit app only reads it, so scoring stays independently testable, and the Claude summary sees segment counts only.',
     validated:
-      'Segments sum to all 5,878 customers and $17,374,804.27 in revenue. The memo\'s win-back offers need a 60-day holdout test before any lift is claimed.',
+      'Claude API answers were checked against Databricks Genie before any figure was published, and segments sum to all 5,878 customers and $17,374,804.27 in revenue. The win-back offers still need a 60-day holdout test before any lift is claimed.',
     highlights: [
       { metric: '5,878', label: 'Customers Segmented' },
       { metric: '77.2%', label: 'Revenue from Top 20%' },
@@ -223,8 +213,9 @@ export const projects: Project[] = [
   },
   {
     title: 'MaternalGrid',
+    award: 'Best Use of ElevenLabs',
     blurb:
-      'Built at HackHers 2026 (HealthHER track): a planning tool that shows where Georgia women live too far from labor and delivery care and lets planners simulate closing or opening a delivering hospital. Travel times are modeled, not routed drive times.',
+      'Data and backend lead at HackHers 2026 (HealthHER track), where the team won Best Use of ElevenLabs: a planning tool that shows where Georgia women live too far from labor and delivery care and lets planners simulate closing or opening a delivering hospital. Travel times are modeled, not routed drive times.',
     tags: ['Streamlit', 'Python', 'PostGIS', 'TypeScript', 'Geospatial Analysis'],
     liveUrl: '/projects/maternalgrid/index.html',
     repoUrl: 'https://github.com/Danorete/maternalgrid',
@@ -232,9 +223,9 @@ export const projects: Project[] = [
     thumbnailAlt:
       'MaternalGrid dashboard showing a map of Georgia counties beyond a 30-minute drive to labor and delivery care, with 74 of 159 counties flagged',
     architecture:
-      'A Streamlit scenario app, an offline dashboard, and a Postgres/PostGIS migration with a TypeScript API layer.',
+      'A PostGIS travel matrix of 10,812 county-to-facility pairs answers closure simulations in about 48 ms, alongside a Streamlit scenario app, an offline 112 KB dashboard, and a TypeScript API layer.',
     validated:
-      'An 11-check verification gate on the migration, with the baseline reproduced from GDPH OASIS 2024 and March of Dimes 2026.',
+      'Three supplied datasets were reconciled against GDPH OASIS and March of Dimes files and all three were rejected for mismatches. An 18-check verification suite gates every database load.',
     highlights: [
       { metric: '159', label: 'Georgia Counties' },
       { metric: '74', label: 'Counties Beyond 30 Min' },
@@ -304,6 +295,9 @@ export const skillCategories: SkillCategory[] = [
       'Ollama',
       'LM Studio',
       'Prompt engineering & AI agent development',
+      'Microsoft Copilot Studio',
+      'Azure OpenAI & AI Foundry',
+      'Model Context Protocol (MCP)',
     ],
   },
   {
@@ -311,15 +305,18 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       'Python (Pandas, NumPy)',
       'SQL',
+      'PostgreSQL / PostGIS',
       'Excel / CSV',
       'Snowflake',
       'Databricks',
       'Power BI',
+      'DAX & star-schema modeling',
       'Tableau',
       'Streamlit',
       'RFM Segmentation',
       'Descriptive Statistics',
       'Gap Analysis',
+      'Data validation & reconciliation',
       'Financial Metrics (ROI, Margins)',
     ],
   },
@@ -329,6 +326,7 @@ export const skillCategories: SkillCategory[] = [
       'Microsoft Azure',
       'Git / GitHub',
       'HTML / CSS / JavaScript',
+      'TypeScript',
       'GSAP animation',
       'Playwright for browser testing',
       'Technical Documentation',
@@ -341,7 +339,7 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       'Microsoft Certified: Power BI Data Analyst Associate (PL-300)',
       'Microsoft Certified: Azure Fundamentals (AZ-900)',
-      'eXcelerate SQL Boot Camp',
+      'SQL Query Writing Boot Camp, eXcelerate (July 2025)',
     ],
   },
 ]
@@ -353,11 +351,13 @@ export const education = {
   honors: [
     'Starks Scholarship — Full Tuition Merit Award',
     "Dean's List — Summer 2024, Spring 2025",
+    'Honorable Mention — Microsoft x AIS GSU Data Dive, Cybersecurity Track (Oct 2026)',
   ],
   coursework: [
-    'Elementary Statistics',
-    'Computer Science I & II',
+    'Principles of Computer Science I & II',
+    'Introduction to Information Systems',
     'Business Analysis',
+    'Elementary Statistics',
     'Corporation Finance',
     'Micro & Macroeconomics',
     'Marketing Management',
