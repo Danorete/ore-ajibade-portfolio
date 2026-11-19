@@ -13,7 +13,7 @@ export function Skills() {
       id="skills"
       index="03"
       label="Skills"
-      title="Skills & tool matrix"
+      title="Tools, methods & credentials"
       intro="Grouped by the kind of work they support, with credentials listed separately."
     >
       <dl className="border-b border-border">
@@ -24,12 +24,7 @@ export function Skills() {
               key={c.name}
               className="grid gap-3 border-t border-border py-6 first:border-t-foreground md:grid-cols-[11rem_1fr] md:gap-8"
             >
-              <dt>
-                <span className="eyebrow !text-foreground">{c.name}</span>
-                <span className="numeric mt-1 block font-mono text-xs text-muted-foreground">
-                  {String(c.skills.length).padStart(2, '0')} items
-                </span>
-              </dt>
+              <dt className="eyebrow !text-foreground">{c.name}</dt>
               <dd>
                 {isCerts ? (
                   <ul className="space-y-2">
@@ -51,9 +46,11 @@ export function Skills() {
                     })}
                   </ul>
                 ) : (
-                  <ul className="grid grid-cols-1 gap-x-6 gap-y-1.5 text-[0.95rem] sm:grid-cols-2 xl:grid-cols-3">
+                  <ul className="gap-x-6 text-[0.95rem] leading-snug sm:columns-2 xl:columns-3">
                     {c.skills.map((s) => (
-                      <li key={s}>{s}</li>
+                      <li key={s} className="break-inside-avoid py-1">
+                        {s}
+                      </li>
                     ))}
                   </ul>
                 )}

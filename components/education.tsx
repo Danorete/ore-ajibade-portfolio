@@ -7,10 +7,11 @@ export function Education() {
       id="education"
       index="04"
       label="Education"
-      title="Education & honors"
+      title="Academics"
     >
       <div className="grid gap-10 md:grid-cols-2 md:gap-8">
         <div>
+          <p className="eyebrow mb-3">Degree</p>
           <h3 className="font-display text-2xl font-medium leading-tight tracking-[-0.01em]">
             {education.school}
           </h3>

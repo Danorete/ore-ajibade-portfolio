@@ -7,8 +7,8 @@ export function Hobbies() {
       id="hobbies"
       index="05"
       label="Off the clock"
-      title="Off the clock"
-      intro="What keeps me curious and balanced outside of work."
+      title="Outside of work"
+      intro="What keeps me curious and balanced."
     >
       <dl className="grid gap-x-10 border-t border-border sm:grid-cols-2">
         {hobbies.map((h) => (

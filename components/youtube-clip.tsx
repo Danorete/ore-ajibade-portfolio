@@ -31,7 +31,7 @@ export function YouTubeClip({ id, title, poster }: YouTubeClipProps) {
             type="button"
             onClick={() => setPlaying(true)}
             aria-label={`Play video: ${title}`}
-            className="group absolute inset-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="group absolute inset-0 focus-visible:outline-offset-[-4px]"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img

@@ -160,7 +160,7 @@ export const projects: Project[] = [
   {
     title: 'AI-Powered RFM Customer Segmentation Dashboard',
     blurb:
-      'Segmented 5,878 customers from 1M+ Online Retail II transactions with RFM scoring, then turned the segments into a decision memo: protect the 2,530 Champions and Loyal Customers behind 84.7% of revenue, and win back the 683 Can\'t Lose Them and At Risk customers behind $1.66M in past spend. A Streamlit dashboard serves the synced segment table, and a Claude summary drafts plain language actions per segment from segment counts.',
+      'Segmented 5,878 customers from 1M+ Online Retail II transactions with RFM scoring. The decision memo says to protect the 2,530 Champions and Loyal Customers behind 84.7% of revenue and win back the 683 Can\'t Lose Them and At Risk customers behind $1.66M in past spend. A Streamlit dashboard serves the segment table, and a Claude summary drafts plain-language actions per segment.',
     tags: ['Python', 'pandas', 'Streamlit', 'Claude API', 'RFM Segmentation'],
     liveUrl: 'https://ore-rfm-dashboard.streamlit.app/',
     repoUrl: 'https://github.com/Danorete/AI-RFM-Dashboard',
@@ -229,7 +229,7 @@ export const projects: Project[] = [
   {
     title: 'PromptPath Onboarding Copilot',
     blurb:
-      'Built at HackATL 2026, where I led the team. PromptPath began as a practice console where a learner directs an AI coding agent through realistic intern tasks and a manager reviews the result (shown in the video). After mentor feedback on Saturday we pivoted to the Onboarding Copilot: an assistant that maps an unfamiliar dataset for a new hire, strips sensitive values from questions before they reach a model, and cites the table and column behind every answer. The Copilot was built in one day.',
+      'Built at HackATL 2026, where I led the team: PromptPath began as a practice console where a learner directs an AI coding agent and a manager reviews the result (shown in the video). After mentor feedback we pivoted to the Onboarding Copilot, which maps an unfamiliar dataset for a new hire, strips sensitive values from questions before they reach a model, and cites the table and column behind every answer. The Copilot was built in one day.',
     tags: ['Streamlit', 'Claude API', 'Python', 'Data Privacy', 'Team Leadership'],
     highlights: [
       { metric: '1 day', label: 'Build Time' },

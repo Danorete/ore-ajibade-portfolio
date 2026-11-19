@@ -6,7 +6,7 @@ import { Section } from './section'
 import { GithubIcon, LinkedinIcon } from './brand-icons'
 
 const fieldClass =
-  'w-full border border-input bg-card px-3.5 py-2.5 text-base outline-none transition-colors placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-ring sm:text-sm'
+  'w-full border border-input bg-card px-3.5 py-2.5 text-base transition-colors placeholder:text-muted-foreground/70 focus-visible:border-primary sm:text-sm'
 
 export function ContactFooter() {
   const [copied, setCopied] = useState(false)
@@ -39,7 +39,7 @@ export function ContactFooter() {
   }
 
   const rowClass =
-    'grid gap-1 border-b border-border py-4 sm:grid-cols-[7rem_1fr] sm:gap-6'
+    'grid items-center gap-x-6 border-b border-border py-1.5 sm:grid-cols-[7rem_1fr]'
 
   return (
     <Section
@@ -52,17 +52,18 @@ export function ContactFooter() {
       <div className="grid gap-12 md:grid-cols-2 md:gap-10">
         <dl className="border-t border-foreground">
           <div className={rowClass}>
-            <dt className="eyebrow pt-1">Email</dt>
-            <dd className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <dt className="eyebrow pt-3 sm:pt-0">Email</dt>
+            <dd className="flex min-h-11 flex-wrap items-center gap-x-4 gap-y-1">
               <a className="text-link numeric inline-flex min-h-11 items-center font-mono text-sm" href={`mailto:${profile.email}`}>
                 {profile.email}
               </a>
               <button
                 type="button"
                 onClick={copyEmail}
+                aria-label="Copy email address"
                 className="inline-flex min-h-11 items-center border border-border px-3 text-xs font-medium transition-colors hover:border-foreground"
               >
-                Copy address
+                Copy
               </button>
               <span role="status" className="text-xs text-muted-foreground">
                 {copied ? 'Copied to clipboard' : ''}
@@ -70,20 +71,22 @@ export function ContactFooter() {
             </dd>
           </div>
           <div className={rowClass}>
-            <dt className="eyebrow pt-1">Phone</dt>
-            <dd>
+            <dt className="eyebrow pt-3 sm:pt-0">Phone</dt>
+            <dd className="flex min-h-11 items-center">
               <a className="text-link numeric inline-flex min-h-11 items-center font-mono text-sm" href={profile.phoneHref}>
                 {profile.phone}
               </a>
             </dd>
           </div>
           <div className={rowClass}>
-            <dt className="eyebrow pt-1">Location</dt>
-            <dd className="font-mono text-sm">{profile.location}</dd>
+            <dt className="eyebrow pt-3 sm:pt-0">Location</dt>
+            <dd className="flex min-h-11 items-center font-mono text-sm">
+              {profile.location}
+            </dd>
           </div>
           <div className={rowClass}>
-            <dt className="eyebrow pt-1">Elsewhere</dt>
-            <dd className="flex flex-wrap gap-x-6">
+            <dt className="eyebrow pt-3 sm:pt-0">Elsewhere</dt>
+            <dd className="flex min-h-11 flex-wrap items-center gap-x-6">
               <a
                 href={profile.github}
                 target="_blank"
@@ -117,7 +120,7 @@ export function ContactFooter() {
                 name="name"
                 required
                 autoComplete="name"
-                placeholder="Jane Doe"
+                placeholder="Alex Rivera"
                 className={fieldClass}
               />
             </div>
@@ -131,7 +134,7 @@ export function ContactFooter() {
                 type="email"
                 required
                 autoComplete="email"
-                placeholder="jane@company.com"
+                placeholder="alex@company.com"
                 className={fieldClass}
               />
             </div>
@@ -162,8 +165,8 @@ export function ContactFooter() {
             </span>
           </div>
           <p id={helpId} className="text-xs leading-relaxed text-muted-foreground">
-            Sending opens your email app with this message filled in. Nothing is
-            stored on this site.
+            All fields are required. Sending opens your email app with this message
+            filled in, and nothing is stored on this site.
           </p>
         </form>
       </div>

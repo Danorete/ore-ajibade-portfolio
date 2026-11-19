@@ -7,8 +7,8 @@ export function Experience() {
       id="experience"
       index="01"
       label="Experience"
-      title="Work experience & leadership"
-      intro="Roles where I shipped data pipelines, AI systems, and measurable results."
+      title="Roles & leadership"
+      intro="Where I shipped data pipelines, AI systems, and measurable results."
     >
       <ol className="border-b border-border">
         {experiences.map((exp) => (

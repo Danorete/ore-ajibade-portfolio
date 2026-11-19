@@ -2,12 +2,22 @@
 
 import { heroFacts, heroStats, profile } from '@/lib/data'
 
+// Keep codes such as "AZ-900" from breaking across lines.
+function NoBreakCodes({ text }: { text: string }) {
+  return text.split(' ').map((word, i, all) => (
+    <span key={`${word}-${i}`} className={word.includes('-') ? 'whitespace-nowrap' : undefined}>
+      {word}
+      {i < all.length - 1 ? ' ' : ''}
+    </span>
+  ))
+}
+
 export function Hero() {
   return (
     <section
       id="about"
       aria-labelledby="hero-title"
-      className="mx-auto max-w-6xl px-4 pt-12 pb-16 sm:px-6 md:pt-20 md:pb-24"
+      className="mx-auto max-w-6xl px-4 pt-10 pb-14 sm:px-6 md:pt-16 md:pb-20"
     >
       <p className="eyebrow flex items-center gap-2.5">
         <span aria-hidden className="size-1.5 bg-primary" />
@@ -59,7 +69,7 @@ export function Hero() {
             </button>
             <a
               href="#contact"
-              className="text-link inline-flex min-h-11 items-center px-2 text-sm font-medium"
+              className="text-link inline-flex min-h-11 items-center text-sm font-medium sm:ml-2"
             >
               Get in touch
             </a>
@@ -82,21 +92,21 @@ export function Hero() {
             alt="Professional portrait of Ore Ajibade"
             width={682}
             height={1024}
-            className="aspect-[4/5] w-full max-w-xs border border-border object-cover object-top lg:max-w-none"
+            className="aspect-[4/3] w-full border border-border object-cover object-top sm:aspect-[4/5] sm:max-w-sm lg:max-w-none"
           />
         </div>
       </div>
 
-      <dl className="mt-16 grid grid-cols-2 border-t border-foreground md:grid-cols-4">
+      <dl className="mt-14 grid grid-cols-2 border-t border-foreground md:mt-16 md:grid-cols-4">
         {heroStats.map((s) => (
           <div
             key={s.label}
-            className="flex flex-col border-b border-border py-5 pr-4 md:border-b-0 md:py-6"
+            className="flex min-w-0 flex-col border-b border-border py-5 odd:pr-4 even:border-l even:pl-4 md:border-b-0 md:border-l md:py-6 md:pl-6 md:pr-4 md:first:border-l-0 md:first:pl-0"
           >
-            <dt className="order-2 mt-1 text-sm text-muted-foreground">
-              {s.label}
+            <dt className="order-2 mt-1 text-balance text-sm leading-snug text-muted-foreground">
+              <NoBreakCodes text={s.label} />
             </dt>
-            <dd className="numeric order-1 font-mono text-3xl tracking-tight sm:text-4xl">
+            <dd className="numeric order-1 font-mono text-3xl leading-none tracking-tight sm:text-4xl">
               {s.metric}
             </dd>
           </div>
