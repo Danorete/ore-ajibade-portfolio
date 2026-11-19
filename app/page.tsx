@@ -12,7 +12,7 @@ export default function Page() {
   return (
     <div id="top" className="min-h-screen">
       <Navbar />
-      <main>
+      <main id="main">
         <Hero />
         <Experience />
         <Projects />

@@ -1,138 +1,189 @@
 import Link from 'next/link'
-import { ArrowRight, Code, ExternalLink, Trophy } from 'lucide-react'
-import { projects } from '@/lib/data'
+import { ArrowUpRight } from 'lucide-react'
+import { projects, type Project } from '@/lib/data'
 import { getCardThumbnail } from '@/lib/piedmont-media'
+import { cn } from '@/lib/utils'
 import { DemoClip } from './demo-clip'
+import { Section } from './section'
 import { YouTubeClip } from './youtube-clip'
-import { SectionHeading } from './section-heading'
 
 export function Projects() {
   const piedmontThumb = getCardThumbnail()
 
   return (
-    <section id="projects" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
-      <SectionHeading
-        eyebrow="Selected Work"
-        title="Featured Projects"
-        description="Shipped systems that pair rigorous data engineering with practical, agentic AI."
-      />
+    <Section
+      id="projects"
+      index="02"
+      label="Projects"
+      title="Selected work"
+      intro="Case summaries with the outcome first. Placements are marked."
+    >
+      <ol className="space-y-16 md:space-y-20">
+        {projects.map((p, i) => (
+          <li key={p.title}>
+            <CaseSummary
+              project={p}
+              index={String(i + 1).padStart(2, '0')}
+              thumbnail={
+                p.title === 'The Piedmont Ledger' ? piedmontThumb : p.thumbnail
+              }
+            />
+          </li>
+        ))}
+      </ol>
+    </Section>
+  )
+}
 
-      <div className="mt-10 grid gap-5 md:grid-cols-2">
-        {projects.map((p) => {
-          const thumb =
-            p.title === 'The Piedmont Ledger' ? piedmontThumb : p.thumbnail
+function CaseSummary({
+  project: p,
+  index,
+  thumbnail,
+}: {
+  project: Project
+  index: string
+  thumbnail?: string | null
+}) {
+  // Placed or won: media runs full width above the text. Others sit beside it.
+  const featured = Boolean(p.award)
+  const hasMedia = Boolean(p.youtube || p.video || thumbnail)
 
-          return (
-            <article
-              key={p.title}
-              className="glass group relative flex flex-col gap-5 overflow-hidden rounded-2xl p-6 transition-all hover:border-primary/40 hover:shadow-xl hover:shadow-primary/10"
-            >
-              {p.youtube ? (
-                <YouTubeClip
-                  id={p.youtube.id}
-                  title={p.youtube.title}
-                  poster={p.youtube.poster}
-                />
-              ) : p.video ? (
-                <DemoClip
-                  mp4={p.video.mp4}
-                  gif={null}
-                  poster={p.video.poster}
-                  caption={p.video.caption}
-                />
-              ) : thumb ? (
-                <div className="-mx-6 -mt-6 overflow-hidden border-b border-border">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={thumb}
-                    alt={p.thumbnailAlt ?? p.title}
-                    width={960}
-                    height={540}
-                    loading="lazy"
-                    className="aspect-[16/9] h-auto w-full object-cover"
-                  />
-                </div>
-              ) : null}
+  return (
+    <article aria-labelledby={`project-${index}`} className="border-t border-foreground pt-5">
+      <header className="flex items-baseline justify-between gap-4">
+        <p className="eyebrow numeric">{index}</p>
+        {p.award && (
+          <p className="eyebrow !text-foreground">{p.award}</p>
+        )}
+      </header>
 
-              {p.award && (
-                <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-primary">
-                  <Trophy className="size-3.5" />
-                  {p.award}
-                </span>
-              )}
+      <h3
+        id={`project-${index}`}
+        className="mt-3 max-w-3xl font-display text-2xl font-medium leading-tight tracking-[-0.015em] sm:text-3xl"
+      >
+        {p.title}
+      </h3>
 
-              <div className="flex flex-col gap-2">
-                <h3 className="text-balance text-lg font-semibold leading-snug">
-                  {p.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {p.blurb}
-                </p>
+      <div
+        className={cn(
+          'mt-6',
+          hasMedia && !featured && 'lg:grid lg:grid-cols-12 lg:gap-x-8',
+        )}
+      >
+        {hasMedia && (
+          <div className={cn(featured ? 'mb-8' : 'mb-8 lg:col-span-6 lg:mb-0')}>
+            <Media project={p} thumbnail={thumbnail} />
+          </div>
+        )}
+
+        <div className={cn(hasMedia && !featured && 'lg:col-span-6')}>
+          <p className="eyebrow mb-2">Summary</p>
+          <p className="max-w-2xl text-[0.95rem] leading-relaxed">{p.blurb}</p>
+
+          <dl className="numeric mt-6 grid grid-cols-3 gap-x-4 border-t border-border pt-4">
+            {p.highlights.map((h) => (
+              <div key={h.label} className="flex flex-col">
+                <dt className="order-2 mt-1 text-xs leading-snug text-muted-foreground">
+                  {h.label}
+                </dt>
+                <dd className="order-1 font-mono text-xl tracking-tight sm:text-2xl">
+                  {h.metric}
+                </dd>
               </div>
+            ))}
+          </dl>
 
-              <div className="grid grid-cols-3 gap-3 rounded-xl border border-border bg-background/40 p-4">
-                {p.highlights.map((h) => (
-                  <div key={h.label} className="flex flex-col gap-1">
-                    <span className="font-mono text-lg font-bold text-primary">
-                      {h.metric}
-                    </span>
-                    <span className="text-[11px] leading-tight text-muted-foreground">
-                      {h.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
+          <p className="mt-5 font-mono text-xs leading-relaxed text-muted-foreground">
+            <span className="eyebrow mr-2">Stack</span>
+            {p.tags.join(', ')}
+          </p>
 
-              <div className="mt-auto flex flex-wrap gap-2">
-                {p.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-md bg-secondary px-2 py-1 font-mono text-xs text-muted-foreground"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              {(p.liveUrl || p.repoUrl || p.detailHref) && (
-                <div className="flex flex-wrap gap-4 border-t border-border pt-4">
-                  {p.detailHref && (
-                    <Link
-                      href={p.detailHref}
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary transition-colors hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    >
-                      View case study
-                      <ArrowRight className="size-3.5" />
-                    </Link>
-                  )}
-                  {p.liveUrl && (
-                    <a
-                      href={p.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary transition-colors hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    >
-                      <ExternalLink className="size-3.5" />
-                      Live Demo
-                    </a>
-                  )}
-                  {p.repoUrl && (
-                    <a
-                      href={p.repoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary transition-colors hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    >
-                      <Code className="size-3.5" />
-                      Code
-                    </a>
-                  )}
-                </div>
-              )}
-            </article>
-          )
-        })}
+          <ProjectLinks project={p} />
+        </div>
       </div>
-    </section>
+    </article>
+  )
+}
+
+function Media({
+  project: p,
+  thumbnail,
+}: {
+  project: Project
+  thumbnail?: string | null
+}) {
+  if (p.youtube) {
+    return (
+      <div className="overflow-hidden border border-border">
+        <YouTubeClip
+          id={p.youtube.id}
+          title={p.youtube.title}
+          poster={p.youtube.poster}
+        />
+      </div>
+    )
+  }
+  if (p.video) {
+    return (
+      <DemoClip
+        mp4={p.video.mp4}
+        gif={null}
+        poster={p.video.poster}
+        caption={p.video.caption}
+      />
+    )
+  }
+  if (thumbnail) {
+    return (
+      <figure>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={thumbnail}
+          alt={p.thumbnailAlt ?? p.title}
+          width={1280}
+          height={720}
+          loading="lazy"
+          className="aspect-video w-full border border-border object-cover object-top"
+        />
+      </figure>
+    )
+  }
+  return null
+}
+
+function ProjectLinks({ project: p }: { project: Project }) {
+  const linkClass =
+    'text-link inline-flex min-h-11 items-center gap-1 text-sm font-medium'
+  const external = { target: '_blank', rel: 'noopener noreferrer' } as const
+
+  if (!p.detailHref && !p.liveUrl && !p.repoUrl) return null
+
+  return (
+    <ul className="mt-2 flex flex-wrap gap-x-6">
+      {p.detailHref && (
+        <li>
+          <Link href={p.detailHref} className={linkClass}>
+            Case study
+            <ArrowUpRight aria-hidden className="size-3.5" />
+          </Link>
+        </li>
+      )}
+      {p.liveUrl && (
+        <li>
+          <a href={p.liveUrl} {...external} className={linkClass}>
+            Live demo
+            <ArrowUpRight aria-hidden className="size-3.5" />
+          </a>
+        </li>
+      )}
+      {p.repoUrl && (
+        <li>
+          <a href={p.repoUrl} {...external} className={linkClass}>
+            Code
+            <ArrowUpRight aria-hidden className="size-3.5" />
+          </a>
+        </li>
+      )}
+    </ul>
   )
 }

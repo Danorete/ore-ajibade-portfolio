@@ -56,7 +56,7 @@ export function DemoClip({
 
   return (
     <figure className="flex flex-col gap-3">
-      <div className="overflow-hidden rounded-xl border border-border bg-background/40">
+      <div className="overflow-hidden border border-border bg-card">
         {mp4 ? (
           <video
             ref={videoRef}

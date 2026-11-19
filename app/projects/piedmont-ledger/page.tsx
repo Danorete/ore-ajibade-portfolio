@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowLeft, ExternalLink, Trophy } from 'lucide-react'
+import { ArrowLeft, ExternalLink } from 'lucide-react'
 import { DemoClip } from '@/components/demo-clip'
 import { profile } from '@/lib/data'
 import { getDemoClips, getScreenshots } from '@/lib/piedmont-media'
@@ -84,18 +84,18 @@ export default function PiedmontLedgerPage() {
 
   return (
     <div className="min-h-screen">
-      <header className="glass sticky top-0 z-50 border-b border-border">
+      <header className="sticky top-0 z-50 border-b border-border bg-background">
         <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
           <Link
             href="/#projects"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="inline-flex min-h-11 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             <ArrowLeft className="size-4" />
             Back to projects
           </Link>
           <Link
             href="/"
-            className="text-sm font-semibold transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="inline-flex min-h-11 items-center font-display text-lg font-medium transition-colors hover:text-primary"
           >
             {profile.name}
           </Link>
@@ -105,15 +105,12 @@ export default function PiedmontLedgerPage() {
       <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 md:py-16">
         {/* Hero */}
         <section className="flex flex-col gap-6" aria-labelledby="piedmont-title">
-          <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-primary/15 px-3 py-1 text-xs font-semibold text-primary">
-            <Trophy className="size-3.5" />
-            2nd place
-          </span>
+          <p className="eyebrow !text-foreground">2nd place</p>
 
           <div className="flex flex-col gap-3">
             <h1
               id="piedmont-title"
-              className="text-balance text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
+              className="font-display text-4xl font-medium leading-[1.02] tracking-[-0.025em] sm:text-5xl md:text-6xl"
             >
               The Piedmont Ledger
             </h1>
@@ -124,8 +121,8 @@ export default function PiedmontLedgerPage() {
           </div>
 
           <dl className="grid gap-4 text-sm sm:grid-cols-2">
-            <div className="glass rounded-xl p-4">
-              <dt className="font-mono text-xs uppercase tracking-widest text-primary">
+            <div className="glass  p-4">
+              <dt className="eyebrow">
                 Event
               </dt>
               <dd className="mt-1.5 leading-relaxed text-foreground">
@@ -133,8 +130,8 @@ export default function PiedmontLedgerPage() {
                 28, 2026
               </dd>
             </div>
-            <div className="glass rounded-xl p-4">
-              <dt className="font-mono text-xs uppercase tracking-widest text-primary">
+            <div className="glass  p-4">
+              <dt className="eyebrow">
                 Team
               </dt>
               <dd className="mt-1.5 leading-relaxed text-foreground">
@@ -142,8 +139,8 @@ export default function PiedmontLedgerPage() {
                 Devon Stock
               </dd>
             </div>
-            <div className="glass rounded-xl p-4 sm:col-span-2">
-              <dt className="font-mono text-xs uppercase tracking-widest text-primary">
+            <div className="glass  p-4 sm:col-span-2">
+              <dt className="eyebrow">
                 My role
               </dt>
               <dd className="mt-1.5 leading-relaxed text-foreground">
@@ -161,7 +158,7 @@ export default function PiedmontLedgerPage() {
               href={DEMO_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-fit items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="inline-flex w-fit items-center gap-2  bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <ExternalLink className="size-4" />
               Live demo
@@ -179,7 +176,7 @@ export default function PiedmontLedgerPage() {
               </span>
               <h2
                 id="demo-heading"
-                className="text-balance text-2xl font-bold tracking-tight sm:text-3xl"
+                className="font-display text-3xl font-medium tracking-[-0.015em] sm:text-4xl"
               >
                 The demo in 90 seconds
               </h2>
@@ -209,7 +206,7 @@ export default function PiedmontLedgerPage() {
             </span>
             <h2
               id="story-heading"
-              className="text-balance text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-3xl font-medium tracking-[-0.015em] sm:text-4xl"
             >
               The story
             </h2>
@@ -217,7 +214,7 @@ export default function PiedmontLedgerPage() {
 
           <div className="mt-8 flex max-w-3xl flex-col gap-10">
             <div className="flex flex-col gap-3">
-              <h3 className="text-xl font-semibold">The problem</h3>
+              <h3 className="font-display text-2xl font-medium">The problem</h3>
               <p className="leading-relaxed text-muted-foreground">
                 PassPoint is a ticketing company. A festival company&apos;s secret
                 key (its &quot;keycard&quot;) was posted online by accident. Someone
@@ -231,7 +228,7 @@ export default function PiedmontLedgerPage() {
             </div>
 
             <div className="flex flex-col gap-3">
-              <h3 className="text-xl font-semibold">What I found</h3>
+              <h3 className="font-display text-2xl font-medium">What I found</h3>
               <ul className="flex list-disc flex-col gap-3 pl-5 text-muted-foreground">
                 <li className="leading-relaxed">
                   <span className="font-medium text-foreground">
@@ -276,7 +273,7 @@ export default function PiedmontLedgerPage() {
             </div>
 
             <div className="flex flex-col gap-3">
-              <h3 className="text-xl font-semibold">What I recommended</h3>
+              <h3 className="font-display text-2xl font-medium">What I recommended</h3>
               <p className="leading-relaxed text-muted-foreground">
                 Four layers, each with an action and one risk: keys that open only
                 their own door, trap records with an automatic cut-off, no ticket
@@ -289,7 +286,7 @@ export default function PiedmontLedgerPage() {
             </div>
 
             <div className="flex flex-col gap-3">
-              <h3 className="text-xl font-semibold">How I proved the alert works</h3>
+              <h3 className="font-display text-2xl font-medium">How I proved the alert works</h3>
               <ul className="flex list-disc flex-col gap-3 pl-5 text-muted-foreground">
                 <li className="leading-relaxed">
                   Learned each company&apos;s normal (address, program, tasks,
@@ -335,7 +332,7 @@ export default function PiedmontLedgerPage() {
               </span>
               <h2
                 id="screenshots-heading"
-                className="text-balance text-2xl font-bold tracking-tight sm:text-3xl"
+                className="font-display text-3xl font-medium tracking-[-0.015em] sm:text-4xl"
               >
                 Screenshots
               </h2>
@@ -344,7 +341,7 @@ export default function PiedmontLedgerPage() {
             <div className="mt-8 grid gap-8">
               {screenshots.map((shot) => (
                 <figure key={shot.id} className="flex flex-col gap-3">
-                  <div className="overflow-hidden rounded-xl border border-border bg-background/40">
+                  <div className="overflow-hidden  border border-border bg-background/40">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={shot.src}
@@ -373,7 +370,7 @@ export default function PiedmontLedgerPage() {
             </span>
             <h2
               id="skills-heading"
-              className="text-balance text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-3xl font-medium tracking-[-0.015em] sm:text-4xl"
             >
               Skills this project shows
             </h2>
@@ -381,8 +378,8 @@ export default function PiedmontLedgerPage() {
 
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {skillBlocks.map((block) => (
-              <div key={block.title} className="glass flex flex-col gap-4 rounded-2xl p-6">
-                <h3 className="text-lg font-semibold">{block.title}</h3>
+              <div key={block.title} className="glass flex flex-col gap-4  p-6">
+                <h3 className="font-display text-xl font-medium">{block.title}</h3>
                 <ul className="flex list-disc flex-col gap-2.5 pl-5 text-sm leading-relaxed text-muted-foreground">
                   {block.bullets.map((bullet) => (
                     <li key={bullet}>{bullet}</li>
@@ -405,7 +402,7 @@ export default function PiedmontLedgerPage() {
             </span>
             <h2
               id="differently-heading"
-              className="text-balance text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-3xl font-medium tracking-[-0.015em] sm:text-4xl"
             >
               What I would do differently
             </h2>
@@ -430,17 +427,17 @@ export default function PiedmontLedgerPage() {
             </span>
             <h2
               id="tools-heading"
-              className="text-balance text-2xl font-bold tracking-tight sm:text-3xl"
+              className="font-display text-3xl font-medium tracking-[-0.015em] sm:text-4xl"
             >
               Tools
             </h2>
           </div>
 
-          <ul className="mt-6 flex flex-wrap gap-2">
+          <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 border-t border-border pt-4">
             {tools.map((tool) => (
               <li
                 key={tool}
-                className="rounded-md bg-secondary px-3 py-1.5 font-mono text-xs text-muted-foreground"
+                className="font-mono text-xs text-muted-foreground"
               >
                 {tool}
               </li>
@@ -451,7 +448,7 @@ export default function PiedmontLedgerPage() {
         <div className="mt-16 border-t border-border pt-8 md:mt-24">
           <Link
             href="/#projects"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="text-link inline-flex min-h-11 items-center gap-2 text-sm font-medium text-primary"
           >
             <ArrowLeft className="size-4" />
             Back to all projects

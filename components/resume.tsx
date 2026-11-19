@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { Download, FileText, Printer, X } from 'lucide-react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { X } from 'lucide-react'
 import {
   education,
   experiences,
@@ -9,75 +9,118 @@ import {
   projects,
   skillCategories,
 } from '@/lib/data'
-import { SectionHeading } from './section-heading'
+import { Section } from './section'
+
+const FOCUSABLE =
+  'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
 
 export function Resume() {
   const [open, setOpen] = useState(false)
+  const dialogRef = useRef<HTMLDivElement>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
+  const returnFocusTo = useRef<HTMLElement | null>(null)
 
-  useEffect(() => {
-    const openHandler = () => setOpen(true)
-    window.addEventListener('open-resume', openHandler)
-    return () => window.removeEventListener('open-resume', openHandler)
+  const show = useCallback(() => {
+    returnFocusTo.current = document.activeElement as HTMLElement | null
+    setOpen(true)
   }, [])
 
+  const hide = useCallback(() => {
+    setOpen(false)
+    returnFocusTo.current?.focus()
+  }, [])
+
+  // Other parts of the page (nav, hero) ask for the preview with this event.
   useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    window.addEventListener('open-resume', show)
+    return () => window.removeEventListener('open-resume', show)
+  }, [show])
+
+  // While open: lock scroll, move focus in, keep Tab inside, close on Escape.
+  useEffect(() => {
+    if (!open) return
+    document.body.style.overflow = 'hidden'
+    closeRef.current?.focus()
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        hide()
+        return
+      }
+      if (e.key !== 'Tab' || !dialogRef.current) return
+      const items = dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE)
+      if (items.length === 0) return
+      const first = items[0]
+      const last = items[items.length - 1]
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
+    }
     window.addEventListener('keydown', onKey)
     return () => {
       document.body.style.overflow = ''
       window.removeEventListener('keydown', onKey)
     }
-  }, [open])
+  }, [open, hide])
 
   return (
-    <section id="resume" className="mx-auto max-w-6xl px-4 py-16 sm:px-6 md:py-24">
-      <div className="glass flex flex-col items-start gap-6 rounded-2xl p-8 md:flex-row md:items-center md:justify-between md:p-10">
-        <div className="flex flex-col gap-3">
-          <SectionHeading
-            eyebrow="Resume"
-            title="Read the full story"
-            description="Preview the complete, structured resume in-browser or grab a print-ready PDF copy."
-          />
-        </div>
-        <div className="flex shrink-0 flex-wrap gap-3">
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:brightness-110"
-          >
-            <FileText className="size-4" />
-            Preview Resume
-          </button>
-          <button
-            type="button"
-            onClick={() => window.print()}
-            className="inline-flex items-center gap-2 rounded-lg border border-border bg-card/50 px-5 py-3 text-sm font-medium transition-colors hover:bg-secondary"
-          >
-            <Download className="size-4" />
-            Download PDF
-          </button>
-        </div>
+    <Section
+      id="resume"
+      index="06"
+      label="Resume"
+      title="Read the full story"
+      intro="The complete resume, in the page or as a PDF."
+    >
+      <div className="flex flex-wrap items-center gap-3">
+        <button
+          type="button"
+          onClick={show}
+          className="inline-flex min-h-11 items-center bg-foreground px-6 text-sm font-medium text-background transition-opacity hover:opacity-85"
+        >
+          Preview resume
+        </button>
+        <button
+          type="button"
+          onClick={() => window.print()}
+          className="inline-flex min-h-11 items-center border border-foreground px-6 text-sm font-medium transition-colors hover:bg-foreground hover:text-background"
+        >
+          Download PDF
+        </button>
       </div>
+      <p className="mt-4 max-w-md text-sm text-muted-foreground">
+        Download PDF opens your browser&apos;s print dialog. Choose &ldquo;Save as
+        PDF&rdquo; as the destination.
+      </p>
 
       {open && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
           role="dialog"
           aria-modal="true"
-          aria-label="Resume preview"
+          aria-labelledby="resume-dialog-title"
         >
-          <button
-            type="button"
-            aria-label="Close resume"
-            onClick={() => setOpen(false)}
-            className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+          <div
+            aria-hidden
+            onClick={hide}
+            className="absolute inset-0 bg-foreground/60"
           />
-          <div className="relative flex max-h-[88vh] w-full max-w-3xl flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
-            <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-4">
+          <div
+            ref={dialogRef}
+            className="relative flex max-h-[90vh] w-full max-w-3xl flex-col overflow-hidden border border-foreground bg-background"
+          >
+            <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-3">
               <div className="flex flex-col">
-                <span className="font-semibold">{profile.name}</span>
-                <span className="text-xs text-muted-foreground">
+                <span
+                  id="resume-dialog-title"
+                  className="font-display text-lg font-medium"
+                >
+                  {profile.name}
+                </span>
+                <span className="eyebrow">
                   {profile.role} · {profile.location}
                 </span>
               </div>
@@ -85,18 +128,18 @@ export function Resume() {
                 <button
                   type="button"
                   onClick={() => window.print()}
-                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-3 py-2 text-xs font-medium text-primary-foreground transition-all hover:brightness-110"
+                  className="inline-flex min-h-11 items-center border border-foreground px-4 text-sm font-medium transition-colors hover:bg-foreground hover:text-background"
                 >
-                  <Printer className="size-3.5" />
                   Print / Save PDF
                 </button>
                 <button
+                  ref={closeRef}
                   type="button"
-                  onClick={() => setOpen(false)}
-                  aria-label="Close"
-                  className="flex size-8 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                  onClick={hide}
+                  aria-label="Close resume preview"
+                  className="flex size-11 items-center justify-center hover:bg-muted"
                 >
-                  <X className="size-4" />
+                  <X aria-hidden className="size-5" />
                 </button>
               </div>
             </div>
@@ -108,11 +151,11 @@ export function Resume() {
         </div>
       )}
 
-      {/* Hidden printable copy — shown only when printing */}
+      {/* Hidden printable copy, shown only when printing */}
       <div id="resume-print" className="hidden">
         <ResumeBody print />
       </div>
-    </section>
+    </Section>
   )
 }
 
@@ -120,7 +163,7 @@ function ResumeBody({ print = false }: { print?: boolean }) {
   return (
     <div className={print ? 'text-black' : ''}>
       <header className="border-b border-border pb-4">
-        <h1 className="text-2xl font-bold">{profile.name}</h1>
+        <h1 className="font-display text-3xl font-medium">{profile.name}</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           {profile.role} Developer · {profile.location}
         </p>
@@ -143,17 +186,20 @@ function ResumeBody({ print = false }: { print?: boolean }) {
                 <span className="font-semibold">
                   {e.role} — {e.company}
                 </span>
-                <span className="font-mono text-xs text-muted-foreground">
+                <span className="numeric font-mono text-xs text-muted-foreground">
                   {e.period}
                 </span>
               </div>
               <ul className="mt-1.5 flex flex-col gap-1">
-                {e.points.map((p, i) => (
+                {e.points.map((p) => (
                   <li
-                    key={i}
+                    key={p}
                     className="flex gap-2 text-sm leading-relaxed text-muted-foreground"
                   >
-                    <span className="mt-2 size-1 shrink-0 rounded-full bg-primary" />
+                    <span
+                      aria-hidden
+                      className="mt-2.5 h-px w-2 shrink-0 bg-muted-foreground"
+                    />
                     {p}
                   </li>
                 ))}
@@ -213,9 +259,7 @@ function ResumeGroup({
 }) {
   return (
     <div className="mt-5">
-      <h2 className="mb-2 font-mono text-xs font-semibold uppercase tracking-widest text-primary">
-        {title}
-      </h2>
+      <h2 className="eyebrow mb-2 !text-foreground">{title}</h2>
       {children}
     </div>
   )

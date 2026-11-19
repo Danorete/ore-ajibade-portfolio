@@ -2,7 +2,8 @@
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 
-@custom-variant dark (&:is(.dark *));
+/* Dark mode follows the visitor's system setting. */
+@custom-variant dark (@media (prefers-color-scheme: dark));
 
 @theme inline {
   --color-background: var(--background);
@@ -26,6 +27,7 @@
 
   --font-sans: 'Geist', 'Geist Fallback';
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-display: var(--font-playfair), Georgia, 'Times New Roman', serif;
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -35,71 +37,153 @@
   --radius-3xl: calc(var(--radius) * 2.2);
 }
 
+/*
+ * Design tokens: warm paper, ink, and one blue accent.
+ * Text pairs are all above 4.5:1 (checked in the PR).
+ */
 :root {
-  color-scheme: dark;
+  color-scheme: light dark;
 
-  /* Base: slate-950 background */
-  --background: oklch(0.16 0.02 265);
-  --foreground: oklch(0.96 0.005 265);
+  --background: #f5f3ee;
+  --foreground: #14130f;
 
-  /* Glass cards: zinc-900-ish, slightly lifted */
-  --card: oklch(0.21 0.02 265);
-  --card-foreground: oklch(0.96 0.005 265);
-  --popover: oklch(0.19 0.02 265);
-  --popover-foreground: oklch(0.96 0.005 265);
+  --card: #fbfaf7;
+  --card-foreground: #14130f;
+  --popover: #fbfaf7;
+  --popover-foreground: #14130f;
 
-  /* Primary: violet/indigo neon accent */
-  --primary: oklch(0.62 0.23 288);
-  --primary-foreground: oklch(0.99 0.005 285);
+  --primary: #1d4ed8;
+  --primary-foreground: #ffffff;
 
-  --secondary: oklch(0.27 0.02 265);
-  --secondary-foreground: oklch(0.96 0.005 265);
+  --secondary: #ece9e1;
+  --secondary-foreground: #14130f;
 
-  --muted: oklch(0.25 0.02 265);
-  --muted-foreground: oklch(0.68 0.02 265);
+  --muted: #ece9e1;
+  --muted-foreground: #5b574d;
 
-  /* Accent: indigo glow */
-  --accent: oklch(0.55 0.19 265);
-  --accent-foreground: oklch(0.99 0.005 285);
+  --accent: #e8edfb;
+  --accent-foreground: #14130f;
 
-  --destructive: oklch(0.62 0.2 25);
+  --destructive: #b42318;
 
-  --border: oklch(0.99 0 0 / 10%);
-  --input: oklch(0.99 0 0 / 14%);
-  --ring: oklch(0.62 0.23 288);
+  --border: #d9d5ca;
+  --input: #85806f;
+  --ring: #1d4ed8;
 
-  --radius: 0.75rem;
+  --radius: 0.25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0e0f11;
+    --foreground: #f2f0ea;
+
+    --card: #15171a;
+    --card-foreground: #f2f0ea;
+    --popover: #15171a;
+    --popover-foreground: #f2f0ea;
+
+    --primary: #8aa9ff;
+    --primary-foreground: #0e0f11;
+
+    --secondary: #1c1f23;
+    --secondary-foreground: #f2f0ea;
+
+    --muted: #1c1f23;
+    --muted-foreground: #a5a29a;
+
+    --accent: #1a2238;
+    --accent-foreground: #f2f0ea;
+
+    --destructive: #f97066;
+
+    --border: #2a2d32;
+    --input: #737880;
+    --ring: #8aa9ff;
+  }
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-padding-top: 5rem;
+  }
   body {
     @apply bg-background text-foreground;
-    background-image:
-      radial-gradient(
-        60rem 40rem at 15% -10%,
-        oklch(0.62 0.23 288 / 0.12),
-        transparent 60%
-      ),
-      radial-gradient(
-        50rem 35rem at 100% 0%,
-        oklch(0.55 0.19 265 / 0.1),
-        transparent 55%
-      );
-    background-attachment: fixed;
+    font-size: 1rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
   }
 }
 
+/* Small mono label used for section indexes, field names, and metadata. */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.25;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+/* Tabular, lining figures for stats, dates, and benchmarks. */
+@utility numeric {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: 'tnum' 1, 'lnum' 1;
+}
+
+/* Flat surface with a 1px border. Kept under its old name for the case study page. */
 @utility glass {
-  background: color-mix(in oklch, var(--card) 70%, transparent);
-  backdrop-filter: blur(12px);
+  background: var(--card);
   border: 1px solid var(--border);
 }
 
-@utility glow-text {
-  text-shadow: 0 0 24px oklch(0.62 0.23 288 / 0.45);
+/* Inline text links: underline offsets, no color-only affordance. */
+@utility text-link {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+  text-decoration-color: color-mix(in oklab, currentColor 35%, transparent);
+  transition: text-decoration-color 150ms ease, color 150ms ease;
+  &:hover {
+    text-decoration-color: currentColor;
+    color: var(--primary);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 @media print {

@@ -20,6 +20,25 @@ export const heroStats = [
   { label: 'PL-300 & AZ-900 Certified', metric: '2×', icon: 'badge' },
 ] as const
 
+export const heroFacts = [
+  {
+    label: 'Education',
+    value:
+      'B.B.A. in Computer Information Systems (Data Innovation), Georgia State University',
+    detail: 'Expected May 2027',
+  },
+  {
+    label: 'Now',
+    value: 'AI Intern, BalanX Bio',
+    detail: 'Jul 2026 – Present · Atlanta, GA',
+  },
+  {
+    label: 'Recognition',
+    value: '1st Place, Microsoft x NSBE Agent-A-Thon',
+    detail: '60-minute live sprint',
+  },
+] as const
+
 export type Experience = {
   company: string
   role: string
@@ -235,7 +254,7 @@ export type SkillCategory = {
 
 export const skillCategories: SkillCategory[] = [
   {
-    name: 'AI Development & Engineering',
+    name: 'AI & Agent Engineering',
     skills: [
       'Graph RAG',
       'Neo4j',
@@ -247,38 +266,38 @@ export const skillCategories: SkillCategory[] = [
       'LM Studio',
       'Prompt Engineering',
       'Agent Development',
+      'AI agent prompting',
     ],
   },
   {
-    name: 'Technical Tools & Platforms',
+    name: 'Data & Analytics',
     skills: [
       'Python (Pandas, NumPy)',
-      'Excel / CSV',
       'SQL',
+      'Excel / CSV',
       'Snowflake',
       'Databricks',
       'Power BI',
       'Tableau',
       'Streamlit',
-      'HTML / CSS / JavaScript',
-      'GSAP animation',
-      'Playwright for browser testing',
-      'Git / GitHub',
-      'Microsoft Azure',
-    ],
-  },
-  {
-    name: 'Analytics & Strategy',
-    skills: [
       'RFM Segmentation',
       'Descriptive Statistics',
       'Gap Analysis',
-      'Technical Documentation',
+      'Data analysis and visualization',
       'Financial Metrics (ROI, Margins)',
+    ],
+  },
+  {
+    name: 'Cloud, Tooling & Practice',
+    skills: [
+      'Microsoft Azure',
+      'Git / GitHub',
+      'HTML / CSS / JavaScript',
+      'GSAP animation',
+      'Playwright for browser testing',
+      'Technical Documentation',
       'Project Management',
       'Cybersecurity',
-      'Data analysis and visualization',
-      'AI agent prompting',
     ],
   },
   {
