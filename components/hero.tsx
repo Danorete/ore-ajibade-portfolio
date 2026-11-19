@@ -1,20 +1,25 @@
 'use client'
 
+import { Fragment } from 'react'
 import { heroFacts, heroStats, profile } from '@/lib/data'
 
-// Keep codes such as "AZ-900" from breaking across lines.
+// Keep codes such as "AZ-900" on one line, but still allow a break after them.
 function NoBreakCodes({ text }: { text: string }) {
   return text.split(' ').map((word, i, all) => (
-    <span key={`${word}-${i}`} className={word.includes('-') ? 'whitespace-nowrap' : undefined}>
-      {word}
+    <Fragment key={`${word}-${i}`}>
+      <span className={word.includes('-') ? 'whitespace-nowrap' : undefined}>
+        {word}
+      </span>
       {i < all.length - 1 ? ' ' : ''}
-    </span>
+    </Fragment>
   ))
 }
 
 /*
- * The hero is one screenful on laptops and desktops: the stat strip sits under
- * the portrait instead of below the whole hero, so it is never cut by the fold.
+ * Framing: from tablet width up the stat strip sits at the top of the right
+ * column, above the portrait. The numbers are then visible on any realistic
+ * viewport height and the fold can only cut through the photo. On phones the
+ * portrait comes first and the strip follows below the first screen.
  */
 export function Hero() {
   return (
@@ -28,8 +33,8 @@ export function Hero() {
         {profile.status}
       </p>
 
-      <div className="mt-6 grid gap-10 lg:grid-cols-12 lg:gap-x-10">
-        <div className="lg:col-span-8">
+      <div className="mt-6 grid gap-10 md:grid-cols-12 md:gap-x-8 lg:gap-x-10">
+        <div className="md:col-span-8">
           <h1
             id="hero-title"
             className="font-display text-[clamp(3.25rem,8vw,6rem)] font-medium leading-[0.92] tracking-[-0.035em]"
@@ -90,20 +95,20 @@ export function Hero() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-6 lg:col-span-4">
+        <div className="flex flex-col gap-6 md:col-span-4">
           <img
             src="/ore-ajibade.png"
             alt="Professional portrait of Ore Ajibade"
             width={682}
             height={1024}
-            className="aspect-[4/3] w-full border border-border object-cover object-top sm:aspect-[16/9] lg:aspect-square"
+            className="aspect-[4/3] w-full border border-border object-cover object-top sm:aspect-[16/9] md:aspect-[4/3]"
           />
 
-          <dl className="grid grid-cols-2 border-t border-foreground md:grid-cols-4 lg:grid-cols-2">
+          <dl className="grid grid-cols-2 border-t border-foreground md:order-first">
             {heroStats.map((s) => (
               <div
                 key={s.label}
-                className="flex min-w-0 flex-col border-b border-border py-4 odd:pr-4 even:border-l even:pl-4 md:border-b-0 md:border-l md:py-5 md:pl-6 md:pr-4 md:first:border-l-0 md:first:pl-0 lg:border-b lg:border-l-0 lg:pl-0 lg:pr-4 lg:even:border-l lg:even:pl-4"
+                className="flex min-w-0 flex-col border-b border-border py-4 odd:pr-4 even:border-l even:pl-4"
               >
                 <dt className="order-2 mt-1 text-balance text-sm leading-snug text-muted-foreground">
                   <NoBreakCodes text={s.label} />
