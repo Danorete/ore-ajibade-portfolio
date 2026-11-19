@@ -240,6 +240,31 @@ export const projects: Project[] = [
     },
   },
   {
+    title: 'Money Agent: A Budgeting App with an AI Advisor',
+    blurb:
+      'A personal budgeting and debt payoff app I built and run on my own Mac. It syncs my Chase and Navy Federal accounts through Plaid, keeps transfers, refunds and retirement accounts out of spending, and plans around fixed paydays plus gig income. A Claude advisor answers from my own numbers, but it only suggests. It never moves money, and nothing saves until I click.',
+    tags: ['Python', 'Streamlit', 'SQLite', 'Plaid API', 'Claude API', 'pytest'],
+    architecture:
+      'A local Streamlit and SQLite app where Plaid sync and CSV imports feed one ledger without double counting. Fixed paydays plus a conservative weekly gig floor, after a set aside for tax and gas, drive a 14 day cash forecast, and Claude reaches the data only through 11 read only tools.',
+    validated:
+      '241 automated tests run on made up bank exports and emails with a fake Plaid and a fake Claude, never my real data. One test checks that no tool sends Claude an account number or a transaction description. The video uses synthetic numbers only.',
+    repoNote: 'Private repository',
+    highlights: [
+      { metric: '241', label: 'Automated Tests' },
+      { metric: '11', label: 'Read Only Agent Tools' },
+      { metric: '0', label: 'Account Numbers Sent to AI' },
+    ],
+    thumbnail: '/projects/money-agent/demo-poster.jpg',
+    thumbnailAlt:
+      'Money Agent advisor screen showing what is sent to Claude, category totals only, and a suggested budget card with a Save to app button',
+    video: {
+      mp4: '/projects/money-agent/demo.mp4',
+      poster: '/projects/money-agent/demo-poster.jpg',
+      caption:
+        'A 55 second walkthrough with made up numbers: bank sync, a clean ledger, real pay schedules and an advisor that only suggests.',
+    },
+  },
+  {
     title: 'MaternalGrid',
     award: 'Best Use of ElevenLabs',
     blurb:
