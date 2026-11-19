@@ -80,18 +80,20 @@ function CaseSummary({
           <p className="eyebrow mb-2">Summary</p>
           <p className="max-w-2xl text-[0.95rem] leading-relaxed">{p.blurb}</p>
 
-          <dl className="numeric mt-6 grid grid-cols-3 gap-x-4 border-t border-border pt-4">
-            {p.highlights.map((h) => (
-              <div key={h.label} className="flex flex-col">
-                <dt className="order-2 mt-1 text-xs leading-snug text-muted-foreground">
-                  {h.label}
-                </dt>
-                <dd className="order-1 font-mono text-xl tracking-tight sm:text-2xl">
-                  {h.metric}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          {p.highlights.length > 0 && (
+            <dl className="numeric mt-6 grid grid-cols-3 gap-x-4 border-t border-border pt-4">
+              {p.highlights.map((h) => (
+                <div key={h.label} className="flex flex-col">
+                  <dt className="order-2 mt-1 text-xs leading-snug text-muted-foreground">
+                    {h.label}
+                  </dt>
+                  <dd className="order-1 font-mono text-xl tracking-tight sm:text-2xl">
+                    {h.metric}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          )}
 
           {(p.architecture || p.validated) && (
             <dl className="mt-5 space-y-3 border-t border-border pt-4 text-sm leading-relaxed">
