@@ -45,7 +45,7 @@ function concreteTexture(aniso: number) {
     512,
     512,
     (g) => {
-      g.fillStyle = '#74685a'
+      g.fillStyle = '#3e4840'
       g.fillRect(0, 0, 512, 512)
       const r = rng(11)
       for (let i = 0; i < 9000; i++) {
@@ -235,7 +235,7 @@ export function createSkateScene(
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, small() ? 1.5 : 1.75))
   renderer.outputColorSpace = THREE.SRGBColorSpace
   renderer.toneMapping = THREE.ACESFilmicToneMapping
-  renderer.toneMappingExposure = 1.1
+  renderer.toneMappingExposure = 1.15
   renderer.shadowMap.enabled = !small()
   renderer.shadowMap.type = THREE.PCFSoftShadowMap
   const aniso = renderer.capabilities.getMaxAnisotropy()
@@ -243,19 +243,19 @@ export function createSkateScene(
 
   const scene = new THREE.Scene()
   scene.background = new THREE.Color(PALETTE.ink)
-  scene.fog = new THREE.Fog(PALETTE.ink, 26, 90)
+  scene.fog = new THREE.Fog(PALETTE.ink, 33, 108)
   const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 260)
 
   // Night session under the park lights.
-  scene.add(new THREE.HemisphereLight('#e8d6b4', '#120d08', 1.0))
-  const lamp = new THREE.DirectionalLight('#ffe6bf', 2.3)
+  scene.add(new THREE.HemisphereLight('#c4f2cf', '#08170b', 1.35))
+  const lamp = new THREE.DirectionalLight('#f1e2c1', 2.7)
   lamp.castShadow = true
   lamp.shadow.mapSize.set(1536, 1536)
   Object.assign(lamp.shadow.camera, { left: -11, right: 11, top: 11, bottom: -11, near: 1, far: 50 })
   lamp.shadow.bias = -0.0006
   scene.add(lamp, lamp.target)
   // Soft fill from the camera side so the rider's dark tee and skin read at night.
-  const fill = new THREE.DirectionalLight('#fff1dc', 1.3)
+  const fill = new THREE.DirectionalLight('#e9f6df', 1.2)
   scene.add(fill, fill.target)
 
   const n = stations.length
@@ -316,7 +316,7 @@ export function createSkateScene(
     (c) => new THREE.MeshStandardMaterial({ color: c, roughness: 0.9, flatShading: true }),
   )
   const trunkMat = new THREE.MeshStandardMaterial({ color: PALETTE.bark, roughness: 0.9 })
-  const lampMat = new THREE.MeshStandardMaterial({ color: '#ffe2a8', emissive: '#ffcf7a', emissiveIntensity: 2.2 })
+  const lampMat = new THREE.MeshStandardMaterial({ color: '#efffc3', emissive: '#b7fc71', emissiveIntensity: 2.8 })
   const canopy = new THREE.IcosahedronGeometry(1, 0)
   const trunkGeo = new THREE.CylinderGeometry(0.18, 0.26, 1, 7)
   const poleGeo = new THREE.CylinderGeometry(0.09, 0.12, 8, 8)
@@ -398,6 +398,35 @@ export function createSkateScene(
   )
   scene.add(stars)
 
+  // After-hours styling: runway lane marks, soft light pools and a distant
+  // Atlanta-inspired skyline. These never collide with the physical obstacles.
+  const paintMat = new THREE.MeshBasicMaterial({ color: '#c3ff72', transparent: true, opacity: 0.52, depthWrite: false })
+  const poolMat = new THREE.MeshBasicMaterial({ color: '#c3ff72', transparent: true, opacity: 0.07, depthWrite: false })
+  const stripeGeo = new THREE.PlaneGeometry(0.09, 3.8)
+  const poolGeo = new THREE.CircleGeometry(2.8, 32)
+  for (let i = 0; i < stations.length; i++) {
+    const c = center(i)
+    for (const x of [-6.5, 6.5]) {
+      const stripe = new THREE.Mesh(stripeGeo, paintMat)
+      stripe.rotation.x = -Math.PI / 2
+      stripe.position.set(x, 0.017, -c)
+      scene.add(stripe)
+    }
+    if (i % 2 === 0) {
+      const pool = new THREE.Mesh(poolGeo, poolMat)
+      pool.rotation.x = -Math.PI / 2
+      pool.position.set(-11.2, 0.025, -c)
+      scene.add(pool)
+    }
+  }
+  const skylineMat = new THREE.MeshStandardMaterial({ color: '#0d2118', roughness: 1 })
+  for (let i = 0; i < Math.ceil(total / 18); i++) {
+    const h = 5 + r() * 13
+    const tower = new THREE.Mesh(new THREE.BoxGeometry(5 + r() * 5, h, 8 + r() * 6), skylineMat)
+    tower.position.set(i % 2 ? 59 : -59, h / 2, -i * 18 + 20)
+    scene.add(tower)
+  }
+
   const { board, spin, wheels, textures: boardTex } = buildBoard(opts.initials, font, aniso)
   textures.push(...boardTex)
   scene.add(board)
@@ -463,13 +492,14 @@ export function createSkateScene(
     const intro = Math.max(0, 1 - d / INTRO)
     const portrait = camera.aspect < 0.8 ? 1 : 0
     wantPos.set(
-      5.2 + intro * 3,
-      Math.max(m.y, 1.2) + 3.4 + intro * 5 + portrait,
-      -d + 9.5 + intro * 2 + portrait * 3,
+      4.5 + intro * 1.8,
+      Math.max(m.y, 1.2) + 3.15 + intro * 4.7 + portrait,
+      -d + 7.7 + intro * 2.2 + portrait * 4.5,
     )
     // At the top of the drop-in, look down the ramp so the rider stays in frame below the title.
-    // Portrait phones look a little lower, which lifts the rider above the stop card.
-    wantLook.set(-0.8, Math.max(m.y, 0.6) + 1.6 - intro * 3.5 - portrait * 2.2, -d - 6)
+    // Portrait phones tilt down while riding, which lifts the rider above the stop card;
+    // during the intro they tilt up so the rider sits in the space under the buttons.
+    wantLook.set(-0.35, Math.max(m.y, 0.6) + 1.5 - intro * 3.1 - portrait * (8 - intro * 17), -d - 4.4)
     if (first) {
       camPos.copy(wantPos)
       camLook.copy(wantLook)
