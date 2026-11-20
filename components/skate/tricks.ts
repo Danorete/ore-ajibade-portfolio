@@ -73,13 +73,13 @@ export const OUTRO = 12 // roll-out after the last stop
 
 /** Earth tones: black, brown, green, plus a cream for text. */
 export const PALETTE = {
-  ink: '#0d0b08',
-  soil: '#1a140e',
-  bark: '#4a3423',
-  wood: '#8a5a36',
-  concrete: '#7c6f5f',
-  moss: '#5d7b3a',
-  leaf: '#2f4a24',
-  sage: '#a9bf86',
-  cream: '#efe7d6',
+  ink: '#050b08',
+  soil: '#101e14',
+  bark: '#77553b',
+  wood: '#93633b',
+  concrete: '#515e53',
+  moss: '#c3ff72',
+  leaf: '#183c2d',
+  sage: '#d7f5c0',
+  cream: '#f3f5ed',
 } as const
