@@ -401,8 +401,10 @@ export function createSkateScene(
   const { board, spin, wheels, textures: boardTex } = buildBoard(opts.initials, font, aniso)
   textures.push(...boardTex)
   scene.add(board)
-  const rider = buildRider()
-  textures.push(...rider.textures)
+  // The rider's artwork loads after the scene starts; redraw when it lands.
+  const rider = buildRider(() => {
+    dirty = true
+  })
   scene.add(rider.root)
 
   // Where the board is d units into the run, before any trick rotation.
@@ -541,6 +543,7 @@ export function createSkateScene(
       geos.forEach((g) => g.dispose())
       ms.forEach((mm) => mm.dispose())
       textures.forEach((t) => t.dispose())
+      rider.textures.forEach((t) => t.dispose())
       renderer.dispose()
     },
   }

@@ -10,9 +10,9 @@ import * as THREE from 'three'
  * image files to load.
  */
 
-const SKIN = '#3d2516'
+const SKIN = '#3f2b22' // sampled from the reference image
 const HAIR = ['#0d0a08', '#15100c', '#1c1510']
-const TEE = '#2a2829'
+const TEE = '#3a3737'
 const SHOE = '#121011'
 const WHITE = '#ece8df'
 
@@ -266,7 +266,16 @@ function denim() {
   return tex
 }
 
-export function buildRider() {
+/** Artwork cropped from Ore's reference image (public/skate). Painted canvases stand in until they load. */
+const ART = {
+  front: '/skate/tee-front.webp',
+  sleeve: '/skate/tee-sleeve.webp',
+  plain: '/skate/tee-plain.webp',
+  jeans: '/skate/jeans.webp',
+}
+
+/** onChange: called when an artwork image finishes loading, so the scene can redraw. */
+export function buildRider(onChange?: () => void) {
   const root = new THREE.Group()
   const mat = (color: string, roughness = 0.75, map?: THREE.Texture) =>
     new THREE.MeshStandardMaterial({ color: map ? '#ffffff' : color, roughness, map })
@@ -275,13 +284,33 @@ export function buildRider() {
   const side = teeSide()
   const back = teeBack()
   const jeansTex = denim()
-  const textures = [front, side, back, jeansTex]
+  const textures: THREE.Texture[] = [front, side, back, jeansTex]
 
   const skin = mat(SKIN, 0.55)
   const teeSideMat = mat(TEE, 0.9, side)
+  const sleeveMat = mat(TEE, 0.9, side)
   const teeFrontMat = mat(TEE, 0.9, front)
   const teeBackMat = mat(TEE, 0.9, back)
   const jeans = mat('#4a5563', 0.92, jeansTex)
+
+  // Swap in the real artwork once each image arrives.
+  const loader = new THREE.TextureLoader()
+  const useArt = (url: string, mats: THREE.MeshStandardMaterial[], wrap = false) =>
+    loader.load(url, (tex) => {
+      tex.colorSpace = THREE.SRGBColorSpace
+      if (wrap) tex.wrapS = THREE.RepeatWrapping
+      if (url === ART.jeans) tex.repeat.x = 2 // the strip is one leg's front; repeat it around the leg
+      textures.push(tex)
+      for (const m of mats) {
+        m.map = tex
+        m.needsUpdate = true
+      }
+      onChange?.()
+    })
+  useArt(ART.front, [teeFrontMat])
+  useArt(ART.sleeve, [sleeveMat], true)
+  useArt(ART.plain, [teeSideMat, teeBackMat], true)
+  useArt(ART.jeans, [jeans], true)
   const shoe = mat(SHOE, 0.6)
   const white = mat(WHITE, 0.7)
 
@@ -314,7 +343,7 @@ export function buildRider() {
     sole: add(cube, white),
   }))
   const arms = sides.map(() => ({
-    sleeve: add(flare, teeSideMat), // short, loose sleeve to just above the elbow
+    sleeve: add(flare, sleeveMat), // short, loose sleeve to just above the elbow
     upper: add(cyl, skin),
     fore: add(cyl, skin),
     elbow: joint(0.075, skin),
@@ -339,6 +368,11 @@ export function buildRider() {
     eye.position.set(0.245, 0.05, z)
     head.add(eye)
   }
+  // Short goatee.
+  const beard = new THREE.Mesh(ball, mat(HAIR[0], 0.95))
+  beard.scale.set(0.07, 0.07, 0.1)
+  beard.position.set(0.225, -0.22, 0)
+  head.add(beard)
   const cap = new THREE.Mesh(new THREE.SphereGeometry(1, 20, 14, 0, Math.PI * 2, 0, Math.PI * 0.45), mat(HAIR[0], 0.95))
   cap.scale.set(0.3, 0.34, 0.3)
   cap.position.set(-0.02, 0.035, 0)
@@ -361,7 +395,7 @@ export function buildRider() {
     if (dir.x > 0.45) continue
     if (dir.x > 0.05 && Math.abs(dir.z) < 0.55 && phi > 0.5) continue
     a.copy(dir).multiply(scale)
-    const len = 0.36 + r() * 0.28 // to the jaw and neck, like the reference
+    const len = 0.5 + r() * 0.3 // to the neck and collarbone, like the reference
     b.copy(a)
       .add(new THREE.Vector3(Math.min(dir.x, 0) * 0.3 - 0.06, 0, dir.z * 0.35))
       .add(new THREE.Vector3(0, -len, 0))
