@@ -254,6 +254,9 @@ export function createSkateScene(
   Object.assign(lamp.shadow.camera, { left: -11, right: 11, top: 11, bottom: -11, near: 1, far: 50 })
   lamp.shadow.bias = -0.0006
   scene.add(lamp, lamp.target)
+  // Soft fill from the camera side so the rider's dark tee and skin read at night.
+  const fill = new THREE.DirectionalLight('#fff1dc', 1.3)
+  scene.add(fill, fill.target)
 
   const n = stations.length
   const total = INTRO + n * SPACING + OUTRO
@@ -399,6 +402,7 @@ export function createSkateScene(
   textures.push(...boardTex)
   scene.add(board)
   const rider = buildRider()
+  textures.push(...rider.textures)
   scene.add(rider.root)
 
   // Where the board is d units into the run, before any trick rotation.
@@ -505,6 +509,8 @@ export function createSkateScene(
 
       lamp.position.set(m.x + 7, m.y + 16, -d + 6)
       lamp.target.position.set(m.x, 0, -d)
+      fill.position.set(m.x + 6, m.y + 5, -d + 10)
+      fill.target.position.set(m.x, m.y + 2, -d)
       lastD = d
 
       if (i !== lastStation) {
