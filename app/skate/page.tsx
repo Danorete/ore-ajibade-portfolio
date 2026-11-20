@@ -1,12 +1,15 @@
 import type { Metadata, Viewport } from 'next'
+import { Bowlby_One } from 'next/font/google'
 import { experiences, profile, projects } from '@/lib/data'
 import { SkateExperience, type Station } from '@/components/skate/skate-experience'
-import { PALETTE, TRICKS } from '@/components/skate/tricks'
+import { LINE, PALETTE } from '@/components/skate/tricks'
+
+const display = Bowlby_One({ weight: '400', subsets: ['latin'], display: 'swap' })
 
 export const metadata: Metadata = {
   title: 'Ore Ajibade · Drop In',
   description:
-    'Ore Ajibade’s portfolio as a skate run: a board rolls down a rink and lands a trick over each role and project.',
+    'Ore Ajibade’s portfolio as a night session at a skatepark: one trick for every role and project.',
 }
 
 export const viewport: Viewport = {
@@ -41,17 +44,26 @@ export default function SkatePage() {
 
   const stations: Station[] = [...roles, ...work].map((s, i) => ({
     ...s,
-    trick: TRICKS[i % TRICKS.length],
+    trick: LINE[i % LINE.length],
   }))
+
+  const initials = profile.name
+    .split(' ')
+    .map((w) => w[0])
+    .join('')
+    .toUpperCase()
 
   return (
     <SkateExperience
       name={profile.name}
-      tagline="AI and data builder from Atlanta. Every stop on this rink is a role or a project, and the board lands a trick over each one."
+      initials={initials}
+      tagline="AI and data builder from Atlanta. Every stop in this park is a role or a project, and every one gets its own trick."
       email={profile.email}
       linkedin={profile.linkedin}
       github={profile.github}
       stations={stations}
+      displayClass={display.className}
+      displayFamily={display.style.fontFamily}
     />
   )
 }
